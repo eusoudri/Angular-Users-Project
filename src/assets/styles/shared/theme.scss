@@ -1,24 +1,54 @@
 .matarazzo-theme{
+  textarea,
+  input,
+  select,
+  a,
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-tertiary {
+    &:focus,
+    &:active{
+      box-shadow: 0 0 0 0;
+      border: 0 none;
+      outline: 0;
+    }
+  } 
+
   .container{
     padding: 0 15px;
     min-height: 700px;
   }
 
-  .form-control{
-    border: none;
-    border-radius: 16px;
-    padding: 13px 20px;
-    font-size: 12px;
-    color: $color-gray-lightness;
+  .modal-header{
+    display: block;
+  }
+
+  .form{
+    &-group{
+      &.theme{
+        border-bottom: 1px solid $color-gray;
+        border-radius: initial;
+      }
+    }
+    &-control{
+      border: none;
+      border-radius: 16px;
+      padding: 11px 20px;
+      font-size: 12px;
+      color: $color-gray;
+    }
   }
 
   .btn{
     &-primary{
+      @extend .btn-default;
       background-color: $color-primary;
-      border: none;
-      padding: 13px 20px;
-      border-radius: 16px;
-      font-size: 13px;
+      font-size: 12px;
+
+      &:hover{
+        background-color: $color-primary-light;
+      }
     }
 
     &-secondary{
@@ -29,12 +59,39 @@
       font-weight: 600;
       border-radius: 20px;
       padding: 5px 27px;
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
+    }
+
+    &-tertiary{
+      @extend .btn-default;
+      background-color: $color-gray-light;
+      border: 1px solid $color-gray-medium;
+      font-size: 12px;
     }
   }
   
   .list-group-item{
     background: none;
     padding: 20px;
+    padding: 26px 20px 20px 20px;
+
+    p, h2{
+      margin: 0;
+    }
+  }
+
+  .modal-content{
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+  }
+
+  .modal-footer,
+  .modal-header{
+    border: none;
   }
   
   .nav-pills{

@@ -23,6 +23,12 @@ a{
   }
 }
 
+.btn-default{
+  border: none;
+  padding: 11px 25px;
+  border-radius: 16px;
+}
+
 .matarazzo-theme{
   .l{
     &-main{
@@ -146,45 +152,6 @@ a{
       border-radius: 0 30px 30px 0;
       padding: 45px;
       background-color: $color-gray-lightness;  
-    }
-  }
-
-  .container{
-    padding: 0 15px;
-    min-height: 700px;
-  }
-
-  .form-control{
-    border: none;
-    border-radius: 16px;
-    padding: 13px 20px;
-    font-size: 12px;
-    color: $color-gray-lightness;
-  }
-
-  .btn-primary{
-    background-color: $color-primary;
-    border: none;
-    padding: 13px 20px;
-    border-radius: 16px;
-    font-size: 13px;
-  }
-  
-  .list-group-item{
-    background: none;
-    padding: 20px;
-  }
-  
-  .nav-pills{
-    .nav-link{
-      padding: 15px 15px 15px 61px;
-      
-      &.active{
-        background-color: $color-gray-lightness;
-        border-radius: 18px 0 0 18px;
-        padding: 15px 15px 15px 61px;
-        color: $color-gray;
-      }
     }
   }
 }
