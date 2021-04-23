@@ -1,0 +1,49 @@
+<div class="modal fade" id="modalFamilie" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="l-title-header container-default w-100">Novo Membro</h1>
+        <p class="l-title container-default w-100">Adicione um novo membro da família</p>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="true">Dados Obrigatórios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="extra-tab" data-toggle="tab" href="#extra" role="tab" aria-controls="extra" aria-selected="false">Dados Extras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos Necessários</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
+ 
+                <modal-add-familie-member-required></modal-add-familie-member-required>
+
+              </div>
+              <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
+
+                <modal-add-familie-member-extra></modal-add-familie-member-extra>
+
+              </div>
+              <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
+
+                <modal-add-familie-member-attachment></modal-add-familie-member-attachment>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-tertiary right" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Limpar</button>
+        <button type="button" class="btn btn-primary">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>

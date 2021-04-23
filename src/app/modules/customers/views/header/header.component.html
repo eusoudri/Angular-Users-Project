@@ -1,42 +1,26 @@
 <div class="l-header">
-  <h1 class="l-title-header">Famílias</h1>
-  <div class="l-add">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modalFamilie">+ Adicionar Família</button>
-  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h1 class="l-title-header">Famílias</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Famílias</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Membros</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-sm-8">
+      <div class="l-add">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalFamilie">+ Adicionar Família</button>
+      </div>
 
-  <!-- -- Modal -- -->
-  <div class="modal fade" id="modalFamilie" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="l-title-header container-default w-100">Família</h1>
-          <p class="l-title container-default w-100">Adicione uma família</p>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-10">
-              <form>
-                <div class="form-group theme">
-                  <input type="email" class="form-control" id="nome" placeholder="Nome Família">
-                </div>
-              </form>
-            </div>
+      <div class="l-search">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-tertiary float-left" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar mudanças</button>
-        </div>
+        </form>
       </div>
     </div>
-  </div>
-  <!-- -- Modal -- -->
-
-  <div class="l-search">
-    <form class="form-inline">
-      <div class="form-group mx-sm-3 mb-2">
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
-      </div>
-    </form>
   </div>
 </div>

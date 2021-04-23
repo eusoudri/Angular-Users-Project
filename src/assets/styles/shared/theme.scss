@@ -6,6 +6,7 @@
   button,
   .btn-primary,
   .btn-secondary,
+  .btn-info,
   .btn-tertiary {
     &:focus,
     &:active{
@@ -20,17 +21,26 @@
     min-height: 700px;
   }
 
-  .modal-header{
-    display: block;
-  }
-
   .form{
     &-group{
       &.theme{
         border-bottom: 1px solid $color-gray;
         border-radius: initial;
+
+        input, select{
+          padding: 10px;
+        }
       }
     }
+
+    &-check-input{
+      border: 1px solid $color-gray;
+
+      &:checked{
+        background-color: $color-gray-dark;
+      }
+    }
+
     &-control{
       border: none;
       border-radius: 16px;
@@ -52,7 +62,19 @@
     }
 
     &-secondary{
+      @extend .btn-default;
+      background: none;
+      color: $color-gray;
+      border: 1px solid $color-gray-medium;
       font-size: 12px;
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
+    }
+
+    &-info{
+      font-size: 11px;
       background-color: $color-gray-light;
       border: 1px solid $color-gray-medium;
       color: $color-gray-dark;
@@ -70,6 +92,15 @@
       background-color: $color-gray-light;
       border: 1px solid $color-gray-medium;
       font-size: 12px;
+
+      &.right{
+        position: absolute;
+        left: 32px;
+      }
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
     }
   }
   
@@ -83,10 +114,25 @@
     }
   }
 
-  .modal-content{
-    padding: 20px;
-    border-radius: 15px;
-    border: none;
+  .modal{
+    &-content{
+      padding: 20px;
+      border-radius: 15px;
+      border: none;
+    }
+
+    &-header{
+      display: block;
+    }
+
+    &-dialog{
+      .list-group{
+        .list-group-item{
+          padding: 10px 20px;
+          color: $color-gray;
+        }
+      }
+    }
   }
 
   .modal-footer,
@@ -94,15 +140,61 @@
     border: none;
   }
   
-  .nav-pills{
-    .nav-link{
-      padding: 15px 15px 15px 61px;
-      
-      &.active{
-        background-color: $color-gray-lightness;
-        border-radius: 18px 0 0 18px;
-        padding: 15px 15px 15px 61px;
+  .breadcrumb{
+    @extend .container-default;
+    width: 100%;
+
+    &-item{
+      a{
         color: $color-gray;
+      }
+
+      &.active{
+        font-weight: 700;
+      }
+    } 
+  }
+
+  .page-link{
+    color: $color-black;
+    background: none;
+
+    &:hover{
+      background-color: $color-gray-light;
+    }
+  }
+
+  .pagination{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .nav{
+    &-pills{
+      .nav-link{
+        padding: 15px 15px 15px 61px;
+        
+        &.active{
+          background-color: $color-gray-lightness;
+          border-radius: 18px 0 0 18px;
+          padding: 15px 15px 15px 61px;
+          color: $color-gray;
+        }
+      }
+    }
+
+    &-tabs{
+      margin-bottom: 30px;
+
+      .nav-link{
+        color: $color-gray-dark;
+
+        &.active{
+          font-weight: 600;
+        }
       }
     }
   }
