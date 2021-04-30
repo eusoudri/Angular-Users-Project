@@ -7,9 +7,10 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ContainerComponent } from './modules/customers/views/container/container.component';
 import { NavComponent } from './modules/customers/views/nav/nav.component';
 import { HeaderComponent } from './modules/customers/views/header/header.component';
+import { ContainerLoginComponent } from './modules/administrator/container-login/container-login.component';
+import { LoginComponent } from './modules/administrator/login/login.component';
 import { FamiliesComponent } from './modules/customers/views/families/families.component';
 import { FamiliesMemberListComponent } from './modules/customers/views/families-member-list/families-member-list.component';
 import { ModalAddFamilieComponent } from './modules/customers/views/modals/modal-add-familie/modal-add-familie.component';
@@ -23,9 +24,10 @@ import { PaginationComponent } from './modules/customers/views/pagination/pagina
 @NgModule({
   declarations: [
     AppComponent,
-    ContainerComponent,
     NavComponent,
     HeaderComponent,
+    ContainerLoginComponent,
+    LoginComponent,
     FamiliesComponent,
     FamiliesMemberListComponent,
     ModalAddFamilieComponent,

@@ -26,6 +26,7 @@
       &.theme{
         border-bottom: 1px solid $color-gray;
         border-radius: initial;
+        margin-bottom: 10px;
 
         input, select{
           padding: 10px;
@@ -80,7 +81,7 @@
       color: $color-gray-dark;
       font-weight: 600;
       border-radius: 20px;
-      padding: 5px 27px;
+      padding: 5px 15px;
 
       &:hover{
         background-color: $color-gray-medium;
@@ -175,12 +176,12 @@
   .nav{
     &-pills{
       .nav-link{
-        padding: 15px 15px 15px 61px;
+        padding: 15px 15px 15px 40px;
         
         &.active{
           background-color: $color-gray-lightness;
           border-radius: 18px 0 0 18px;
-          padding: 15px 15px 15px 61px;
+          padding: 15px 15px 15px 40px;
           color: $color-gray;
         }
       }
@@ -196,6 +197,32 @@
           font-weight: 600;
         }
       }
+    }
+  }
+
+  .text-right{
+    text-align: right;
+  }
+
+  @media only screen and (max-width: 960px) {
+    .nav{
+      &-pills{
+        .nav-link{
+          padding: 15px 15px 15px 20px;
+          
+          &.active{
+            padding: 15px 15px 15px 20px;
+          }
+        }
+      }
+    }
+
+    .modal-dialog{
+      max-width: 700px;
+    }
+
+    .container{
+      max-width: 900px;
     }
   }
 }

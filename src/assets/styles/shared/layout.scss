@@ -7,6 +7,11 @@ body{
 a{
   text-decoration: none;
   cursor: pointer;
+  color: $color-gray;
+
+  &:hover{
+    color: $color-black;
+  }
 }
 
 label{
@@ -37,12 +42,52 @@ label{
 
 .btn-default{
   border: none;
-  padding: 11px 25px;
+  padding: 11px 20px;
   border-radius: 16px;
 }
 
 .matarazzo-theme{
   .l{
+
+    &-login-container{
+      position: relative;
+      width: 100%;
+
+      .btn-primary{
+        margin-top: 40px;
+        width: 120px;
+      }
+
+      &-item{
+        position: absolute;
+        padding: 50px 100px;
+        background-color: #ffffff;
+        top: 50px;
+        height: 600px;
+        left: 50%;
+        width: 450px;
+        transform: translate(-50%, 0);
+        border-radius: 15px;
+      }
+
+      &-info{
+        margin: 80px 0;
+      }
+    }
+
+    &-password{
+      &-lost{
+        margin-top: 10px;
+        color: $color-gray;
+        text-align: right;
+      }
+    }
+
+    &-register{
+      margin-top: 20px;
+      color: $color-gray;
+    }
+
     &-main{
       position: relative;
       height: 700px;
@@ -71,7 +116,7 @@ label{
 
       &-medium{
         font-weight: 600;
-        font-size: 14px;
+        font-size: 13px;
       }
 
       &-header{
@@ -84,6 +129,54 @@ label{
 
     &-img-logo{
       width: 150px;
+    }
+
+    &-svg{
+      &-small{
+        svg{
+          width: 12px;
+        }
+      }
+
+      &-large{
+        svg{
+          width: 25px;
+        }
+      }
+
+      &-default{
+        svg{
+          width: 15px;
+        }
+      }
+
+      &-color{
+        &-cancel{
+          svg{
+            fill: $color-primary-light;
+          }
+        }
+
+        &-default{
+          svg{
+            fill: $color-gray-dark;
+          }
+        }
+
+        &-success{
+          svg{
+            fill: $color-success;
+          }
+        }
+
+        &-white{
+          svg{
+            fill: $color-white;
+          }
+        }
+      }
+
+
     }
 
     &-btn{
@@ -99,7 +192,25 @@ label{
       }
 
       &-list{
-        margin-top: -8px
+        margin-top: -5px;
+      }
+
+      &-icon{
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      &-text{
+        display: inline-block;
+      }
+
+      &-search{
+        position: absolute;
+        top: 8px;
+        right: 28px;
+        width: 32px;
+        height: 23px;
+        text-align: center;
       }
     }
 
@@ -118,14 +229,12 @@ label{
     &-add{
       position: relative;
       float: right;
-      margin-top: -10px;
     }
 
     &-search{
       position: relative;
       float: right;
-      width: 330px;
-      margin-top: -10px;
+      width: 100%;
     }
 
     &-components{
@@ -136,7 +245,7 @@ label{
     &-login{
       @extend .container-default;
       width: 100%;
-      padding: 30px 0 30px 80px;
+      padding: 30px 0 30px 60px;
 
       &:first-child{
         border-bottom: 2px solid $color-gray-lightness;
@@ -174,6 +283,13 @@ label{
       }
     }
 
+    &-footer{
+      position: absolute;
+      width: 98%;
+      bottom: 0;
+      left: 0;
+    }
+
     &-content{
       @extend .container-absolute;
       border-radius: 0 30px 30px 0;
@@ -181,6 +297,15 @@ label{
       background-color: $color-gray-lightness;  
     }
   }
+
+  @media only screen and (max-width: 960px) {
+    .l-login {
+      padding: 30px 0 30px 40px;
+    }
+  }
 }
+
+
+
 
 

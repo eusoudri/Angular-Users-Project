@@ -4,7 +4,6 @@ import { FamiliesComponent } from './views/families/families.component';
 import { FamiliesMemberListComponent } from './views/families-member-list/families-member-list.component';
 import { NavComponent } from './views/nav/nav.component';
 import { HeaderComponent } from './views/header/header.component';
-import { ContainerComponent } from './views/container/container.component';
 import { ModalAddFamilieComponent } from './views/modals/modal-add-familie/modal-add-familie.component';
 import { ModalAddFamilieMemberComponent } from './views/modals/modal-add-familie-member/modal-add-familie-member.component';
 import { ModalAddFamilieMemberRequiredComponent } from './views/modals/modal-add-familie-member-required/modal-add-familie-member-required.component';
@@ -20,7 +19,6 @@ import { PaginationComponent } from './views/pagination/pagination.component';
     FamiliesMemberListComponent,
     NavComponent,
     HeaderComponent,
-    ContainerComponent,
     ModalAddFamilieComponent,
     ModalAddFamilieMemberComponent,
     ModalAddFamilieMemberRequiredComponent,
