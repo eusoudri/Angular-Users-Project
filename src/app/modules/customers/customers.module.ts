@@ -10,6 +10,7 @@ import { ModalAddFamilieMemberRequiredComponent } from './views/modals/modal-add
 import { ModalAddFamilieMemberExtraComponent } from './views/modals/modal-add-familie-member-extra/modal-add-familie-member-extra.component';
 import { ModalAddFamilieMemberAttachmentComponent } from './views/modals/modal-add-familie-member-attachment/modal-add-familie-member-attachment.component';
 import { PaginationComponent } from './views/pagination/pagination.component';
+import { FamilyTreeComponent } from './views/family-tree/family-tree.component';
 
 
 
@@ -24,7 +25,8 @@ import { PaginationComponent } from './views/pagination/pagination.component';
     ModalAddFamilieMemberRequiredComponent,
     ModalAddFamilieMemberExtraComponent,
     ModalAddFamilieMemberAttachmentComponent,
-    PaginationComponent
+    PaginationComponent,
+    FamilyTreeComponent
   ],
   imports: [
     CommonModule

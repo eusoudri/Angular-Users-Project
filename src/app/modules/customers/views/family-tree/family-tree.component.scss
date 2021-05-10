@@ -1,0 +1,104 @@
+.container{
+  width: 595px;
+  height: 842px;
+  background: #e4e3e3;
+}
+
+.img{
+  width: 50px;
+  height: 50px;
+  background: #cecccc;
+  border-radius: 50px;
+}
+
+.family-tree{
+  position: relative;
+  float: left;
+}
+
+.family-tree-title{
+  background: #600e02;
+  padding: 30px;
+}
+
+.family-tree-title h1{
+  font-size: 18px;
+  color: #fff;
+  font-weight: 200;
+}
+
+.family-tree-logo{
+  width: 150px;
+  margin-left: 70px;
+}
+
+.family-tree-img{
+  padding-right: 20px;
+}
+
+.family-tree-name{
+  color: #600e02;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.family-tree-item{
+  font-size: 12px;
+}
+
+.family-tree-container{
+  position: relative;
+  float: left;
+  width: 220px;
+  background-color: #fff;
+  min-height: 70px;
+  padding: 10px;
+  box-shadow: -3px 3px 4px rgb(0 0 0 / 20%);
+}
+
+.family-tree-container:nth-child(2){
+  margin-left: 80px;
+}
+
+.maternal, .paternal, .applicant{ 
+  & .family-tree-container{
+    & .join{
+      bottom: -44px;
+      right: 50%;
+      position: absolute;
+      height: 50px;
+      border-left: 3px solid #868585;
+
+      &:after{
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background: #868585;
+        position: absolute;
+        top: 0;
+        left: -7px;
+      }
+
+      &:before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background: #868585;
+        position: absolute;
+        bottom: 0;
+        left: -7px;
+      }
+    }
+  }
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
