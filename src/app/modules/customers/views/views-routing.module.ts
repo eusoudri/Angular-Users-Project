@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContainerLoginComponent } from './modules/administrator/container-login/container-login.component'
+import { FamiliesComponent } from '../../customers/views/families/families.component'
 
 const routes: Routes = [
-  { path: '', component: ContainerLoginComponent },
+  { path: 'families', component: FamiliesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class ViewsRoutingModule { }
