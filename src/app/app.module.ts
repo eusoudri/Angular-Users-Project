@@ -7,22 +7,15 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ContainerLoginComponent } from './modules/administrator/container-login/container-login.component';
-import { LoginComponent } from './modules/administrator/login/login.component';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContainerLoginComponent,
-    LoginComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
-    AngularSvgIconModule.forRoot()
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

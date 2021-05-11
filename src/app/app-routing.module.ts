@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContainerLoginComponent } from './modules/administrator/container-login/container-login.component'
 
 const routes: Routes = [
-  { path: '', component: ContainerLoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/administrator/administrator.module').then(
+        (m) => m.AdministratorModule
+      ),
+  },
+  // {
+  //   path: 'customers',
+  //   loadChildren: () =>
+  //     import('').then(
+  //       (m) => m.
+  //     ),
+  // },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

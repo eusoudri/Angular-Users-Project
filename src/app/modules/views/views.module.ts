@@ -7,8 +7,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ViewsRoutingModule } from './views-routing.module';
 import { ViewsComponent } from './views.component';
 
-import { NavComponent } from './../shared/nav/nav.component';
-import { HeaderComponent } from './../shared/header/header.component';
+import { NavComponent } from '../shared/nav/nav.component';
+import { HeaderComponent } from '../shared/header/header.component';
 import { FamiliesComponent } from './families/families.component';
 import { FamilyMemberListComponent } from './family-member-list/family-member-list.component';
 import { ModalAddFamilyComponent } from './modals/modal-add-family/modal-add-family.component';
@@ -16,8 +16,7 @@ import { ModalAddFamilyMemberComponent } from './modals/modal-add-family-member/
 import { ModalAddFamilyMemberRequiredComponent } from './modals/modal-add-family-member-required/modal-add-family-member-required.component';
 import { ModalAddFamilyMemberExtraComponent } from './modals/modal-add-family-member-extra/modal-add-family-member-extra.component';
 import { ModalAddFamilyMemberAttachmentComponent } from './modals/modal-add-family-member-attachment/modal-add-family-member-attachment.component';
-import { PaginationComponent } from './../shared/pagination/pagination.component';
-
+import { PaginationComponent } from '../shared/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -31,16 +30,15 @@ import { PaginationComponent } from './../shared/pagination/pagination.component
     ModalAddFamilyMemberRequiredComponent,
     ModalAddFamilyMemberExtraComponent,
     ModalAddFamilyMemberAttachmentComponent,
-    PaginationComponent
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
     ViewsRoutingModule,
-    HttpClientModule, 
-    AngularSvgIconModule.forRoot()
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [ViewsComponent]
+  bootstrap: [ViewsComponent],
 })
-export class ViewsModule { }
-
+export class ViewsModule {}
