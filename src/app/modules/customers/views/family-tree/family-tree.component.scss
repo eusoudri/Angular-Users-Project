@@ -1,14 +1,52 @@
-.container{
+@media print {
+  .family-tree-title {
+      background-color: #600e02 !important;
+      -webkit-print-color-adjust: exact; 
+  }
+
+  .maternal, .paternal, .applicant{ 
+    & .family-tree-container{
+      & .join{
+        border-left: 1px solid #868585;
+        -webkit-print-color-adjust: exact; 
+  
+        &:after{
+          background-color: #868585 !important;
+          -webkit-print-color-adjust: exact; 
+        }
+  
+        &:before{
+          background-color: #868585 !important;
+          -webkit-print-color-adjust: exact; 
+        }
+      }
+    }
+  }
+}
+
+.family-tree-row{
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 20px 0px;
+
+  &:last-child{
+    .join{
+      display: none;
+    }
+  }
+}
+
+.family-tree-main{
   width: 595px;
   height: 842px;
-  background: #e4e3e3;
+  background: #fff;
+  padding: 0 10px;
 }
 
 .img{
-  width: 50px;
-  height: 50px;
-  background: #cecccc;
-  border-radius: 50px;
+  width: 25px;
+  height: 25px;
 }
 
 .family-tree{
@@ -16,82 +54,100 @@
   float: left;
 }
 
+.family-tree-container-half{
+  position: relative;
+  float: left;
+  width: 50%;
+}
+
 .family-tree-title{
   background: #600e02;
-  padding: 30px;
+  padding: 15px;
+  margin-top: 25px;
+}
+
+.family-tree-title-container{
+  position: relative;
+  float: left;
+  width: 70%;
 }
 
 .family-tree-title h1{
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
   font-weight: 200;
+  margin: 0;
 }
 
 .family-tree-logo{
-  width: 150px;
-  margin-left: 70px;
+  width: 95px;
+}
+
+.family-tree-logo-container{
+  position: relative;
+  float: left;
+  width: 30%;
 }
 
 .family-tree-img{
-  padding-right: 20px;
+  padding: 4px 10px;
 }
 
 .family-tree-name{
   color: #600e02;
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 600;
   border-bottom: 1px solid #000;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
   margin: 0;
 }
 
 .family-tree-item{
-  font-size: 12px;
+  font-size: 8px;
 }
 
 .family-tree-container{
   position: relative;
   float: left;
-  width: 220px;
   background-color: #fff;
-  min-height: 70px;
-  padding: 10px;
-  box-shadow: -3px 3px 4px rgb(0 0 0 / 20%);
+  min-height: 45px;
+  padding: 5px 8px 5px 0;
+  box-shadow: 0 0 4px rgb(0 0 0 / 20%);
 }
 
 .family-tree-container:nth-child(2){
-  margin-left: 80px;
+  margin-left: 20px;
 }
 
 .maternal, .paternal, .applicant{ 
   & .family-tree-container{
     & .join{
-      bottom: -44px;
+      bottom: -31px;
       right: 50%;
       position: absolute;
-      height: 50px;
-      border-left: 3px solid #868585;
+      height: 35px;
+      border-left: 2px solid #868585;
 
       &:after{
         content: '';
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
         border-radius: 50px;
         background: #868585;
         position: absolute;
         top: 0;
-        left: -7px;
+        left: -4px;
       }
 
       &:before{
         content: '';
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
         border-radius: 50px;
         background: #868585;
         position: absolute;
         bottom: 0;
-        left: -7px;
+        left: -4px;
       }
     }
   }
