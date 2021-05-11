@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FamiliesComponent } from './views/families/families.component';
-import { FamiliesMemberListComponent } from './views/families-member-list/families-member-list.component';
+import { FamilyMemberListComponent } from './views/family-member-list/family-member-list.component';
 import { NavComponent } from './views/nav/nav.component';
 import { HeaderComponent } from './views/header/header.component';
-import { ModalAddFamilieComponent } from './views/modals/modal-add-familie/modal-add-familie.component';
-import { ModalAddFamilieMemberComponent } from './views/modals/modal-add-familie-member/modal-add-familie-member.component';
-import { ModalAddFamilieMemberRequiredComponent } from './views/modals/modal-add-familie-member-required/modal-add-familie-member-required.component';
-import { ModalAddFamilieMemberExtraComponent } from './views/modals/modal-add-familie-member-extra/modal-add-familie-member-extra.component';
-import { ModalAddFamilieMemberAttachmentComponent } from './views/modals/modal-add-familie-member-attachment/modal-add-familie-member-attachment.component';
+import { ModalAddFamilyComponent } from './views/modals/modal-add-family/modal-add-family.component';
+import { ModalAddFamilyMemberComponent } from './views/modals/modal-add-family-member/modal-add-family-member.component';
+import { ModalAddFamilyMemberRequiredComponent } from './views/modals/modal-add-family-member-required/modal-add-family-member-required.component';
+import { ModalAddFamilyMemberExtraComponent } from './views/modals/modal-add-family-member-extra/modal-add-family-member-extra.component';
+import { ModalAddFamilyMemberAttachmentComponent } from './views/modals/modal-add-family-member-attachment/modal-add-family-member-attachment.component';
 import { PaginationComponent } from './views/pagination/pagination.component';
 import { FamilyTreeComponent } from './views/family-tree/family-tree.component';
 
@@ -17,14 +17,14 @@ import { FamilyTreeComponent } from './views/family-tree/family-tree.component';
 @NgModule({
   declarations: [
     FamiliesComponent,
-    FamiliesMemberListComponent,
+    FamilyMemberListComponent,
     NavComponent,
     HeaderComponent,
-    ModalAddFamilieComponent,
-    ModalAddFamilieMemberComponent,
-    ModalAddFamilieMemberRequiredComponent,
-    ModalAddFamilieMemberExtraComponent,
-    ModalAddFamilieMemberAttachmentComponent,
+    ModalAddFamilyComponent,
+    ModalAddFamilyMemberComponent,
+    ModalAddFamilyMemberRequiredComponent,
+    ModalAddFamilyMemberExtraComponent,
+    ModalAddFamilyMemberAttachmentComponent,
     PaginationComponent,
     FamilyTreeComponent
   ],

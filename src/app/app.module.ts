@@ -12,12 +12,12 @@ import { HeaderComponent } from './modules/customers/views/header/header.compone
 import { ContainerLoginComponent } from './modules/administrator/container-login/container-login.component';
 import { LoginComponent } from './modules/administrator/login/login.component';
 import { FamiliesComponent } from './modules/customers/views/families/families.component';
-import { FamiliesMemberListComponent } from './modules/customers/views/families-member-list/families-member-list.component';
-import { ModalAddFamilieComponent } from './modules/customers/views/modals/modal-add-familie/modal-add-familie.component';
-import { ModalAddFamilieMemberComponent } from './modules/customers/views/modals/modal-add-familie-member/modal-add-familie-member.component';
-import { ModalAddFamilieMemberRequiredComponent } from './modules/customers/views/modals/modal-add-familie-member-required/modal-add-familie-member-required.component';
-import { ModalAddFamilieMemberExtraComponent } from './modules/customers/views/modals/modal-add-familie-member-extra/modal-add-familie-member-extra.component';
-import { ModalAddFamilieMemberAttachmentComponent } from './modules/customers/views/modals/modal-add-familie-member-attachment/modal-add-familie-member-attachment.component';
+import { FamilyMemberListComponent } from './modules/customers/views/family-member-list/family-member-list.component';
+import { ModalAddFamilyComponent } from './modules/customers/views/modals/modal-add-family/modal-add-family.component';
+import { ModalAddFamilyMemberComponent } from './modules/customers/views/modals/modal-add-family-member/modal-add-family-member.component';
+import { ModalAddFamilyMemberRequiredComponent } from './modules/customers/views/modals/modal-add-family-member-required/modal-add-family-member-required.component';
+import { ModalAddFamilyMemberExtraComponent } from './modules/customers/views/modals/modal-add-family-member-extra/modal-add-family-member-extra.component';
+import { ModalAddFamilyMemberAttachmentComponent } from './modules/customers/views/modals/modal-add-family-member-attachment/modal-add-family-member-attachment.component';
 import { PaginationComponent } from './modules/customers/views/pagination/pagination.component';
 
 
@@ -29,12 +29,12 @@ import { PaginationComponent } from './modules/customers/views/pagination/pagina
     ContainerLoginComponent,
     LoginComponent,
     FamiliesComponent,
-    FamiliesMemberListComponent,
-    ModalAddFamilieComponent,
-    ModalAddFamilieMemberComponent,
-    ModalAddFamilieMemberRequiredComponent,
-    ModalAddFamilieMemberExtraComponent,
-    ModalAddFamilieMemberAttachmentComponent,
+    FamilyMemberListComponent,
+    ModalAddFamilyComponent,
+    ModalAddFamilyMemberComponent,
+    ModalAddFamilyMemberRequiredComponent,
+    ModalAddFamilyMemberExtraComponent,
+    ModalAddFamilyMemberAttachmentComponent,
     PaginationComponent
   ],
   imports: [
