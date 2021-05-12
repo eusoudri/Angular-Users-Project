@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FamiliesComponent } from './modules/customers/views/families/families.component';
-import { FamilyMemberListComponent } from './modules/customers/views/family-member-list/family-member-list.component';
 
 const routes: Routes = [
-  { path: '', component: FamiliesComponent },
-  { path: 'family-member-list', component: FamilyMemberListComponent },
-
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/administrator/administrator.module').then(
+        (m) => m.AdministratorModule
+      ),
+  },
+  // {
+  //   path: 'customers',
+  //   loadChildren: () =>
+  //     import('').then(
+  //       (m) => m.
+  //     ),
+  // },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
