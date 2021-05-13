@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: 'families',
     loadChildren: () =>
-      import('./modules/views/families/families.module').then(
-        (m) => m.FamiliesModule
+      import('./modules/views/views.module').then(
+        (m) => m.ViewsModule
       ),
   },
 ];

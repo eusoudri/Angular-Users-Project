@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FamiliesMemberListRoutingModule } from './family-member-list-routing.module';
+import { FamilyMemberListRoutingModule } from './family-member-list-routing.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    FamiliesMemberListRoutingModule
+    FamilyMemberListRoutingModule
   ]
 })
 export class FamilyMemberListModule { }
