@@ -94,9 +94,17 @@ label{
     }
 
     &-header{
-      @extend .container-default;
-      width: 100%;
-      margin-bottom: 40px;
+      &.title{
+        @extend .container-default;
+        width: 30%;
+        margin-bottom: 40px;
+      }
+
+      &.info{
+        @extend .container-default;
+        width: 70%;
+        margin-bottom: 40px;
+      }
 
       &-item{
         @extend .container-default;

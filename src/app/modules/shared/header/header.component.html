@@ -1,48 +1,13 @@
-<div class="l-header">
+<div class="l-header title">
   <div class="row">
-    <div class="col-sm-5 col-lg-3">
-      <h1 class="l-title-header">Famílias</h1>
+    <div class="col-sm-12">
+      <h1 class="l-title-header">{{activatedRoute}}</h1>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/">Famílias</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Membros</li>
+          <li class="breadcrumb-item" *ngIf="activatedRoute == 'Membros'"><a routerLink="/families">Famílias</a></li>
+          <li class="breadcrumb-item active" *ngIf="activatedRoute == 'Membros'" aria-current="page"><a routerLink="/families/family-member-list">Membros</a></li>
         </ol>
       </nav>
-    </div>
-    <div class="col-sm-7 col-lg-5 offset-xl-2 col-xl-4">
-      <div class="l-search">
-        <form class="form-inline">
-          <div class="form-group mb-2">
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
-          </div>
-          <a class="l-btn-search"><svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/search.svg"></svg-icon></a>
-        </form>
-      </div>
-    </div>
-    <div class="offset-sm-7 col-sm-5 offset-lg-0 col-lg-4 col-xl-3">
-      <div class="l-add">
-        <a class="btn btn-primary" *ngIf=false data-toggle="modal" data-target="#modalFamilie">
-          <div class="l-btn-icon">
-            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
-          </div>
-          <div class="l-btn-text">
-            Adicionar Família
-          </div>
-        </a>
-        <a class="btn btn-primary" *ngIf=true data-toggle="modal" data-target="#modalMember">
-          <div class="l-btn-icon">
-            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
-          </div>
-          <div class="l-btn-text">
-            Adicionar Membro
-          </div>
-        </a>
-      </div>
-
-      <app-modal-add-family-member></app-modal-add-family-member>
-
-      <app-modal-add-family-member></app-modal-add-family-member>
-
     </div>
   </div>
 </div>

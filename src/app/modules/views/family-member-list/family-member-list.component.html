@@ -1,3 +1,32 @@
+<div class="l-header info">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-10 offset-lg-1 col-lg-6 offset-xl-2 col-xl-6">
+      <div class="l-search">
+        <form class="form-inline">
+          <div class="form-group mb-2">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
+          </div>
+          <a class="l-btn-search"><svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/search.svg"></svg-icon></a>
+        </form>
+      </div>
+    </div>
+    <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
+      <div class="l-add">
+        <a class="btn btn-primary" *ngIf=true data-toggle="modal" data-target="#modalMember">
+          <div class="l-btn-icon">
+            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
+          </div>
+          <div class="l-btn-text">
+            Adicionar Membro
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-add-family-member></app-modal-add-family-member>
+
 <div class="l-components">
   <p class="l-title">Lista de Membros Cadastradas</p>
   <ul class="list-group list-group-flush">

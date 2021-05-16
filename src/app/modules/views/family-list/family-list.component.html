@@ -1,4 +1,32 @@
 
+<div class="l-header info">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-10 offset-lg-1 col-lg-6 offset-xl-2 col-xl-6">
+      <div class="l-search">
+        <form class="form-inline">
+          <div class="form-group mb-2">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
+          </div>
+          <a class="l-btn-search"><svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/search.svg"></svg-icon></a>
+        </form>
+      </div>
+    </div>
+    <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
+      <div class="l-add">
+        <a class="btn btn-primary" data-toggle="modal" data-target="#modalFamily">
+          <div class="l-btn-icon">
+            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
+          </div>
+          <div class="l-btn-text">
+            Adicionar Família
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-add-family></app-modal-add-family>
 
 <div class="l-components">
   <p class="l-title">Lista de Famílias Cadastradas</p>
@@ -8,11 +36,31 @@
         <div class="col-sm-6 col-lg-4">
           <h2 class="l-title-medium">Família Silva</h2>
         </div>
-        <div class="col-sm-3 d-sm-none d-lg-block">
+        <!-- <div class="col-sm-3 d-sm-none d-lg-block">
           <p class="l-title-small">Membros: <strong>03</strong></p>
+        </div> -->
+        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
+          <a type="button" class="btn btn-info l-btn-list" routerLink="/families/family-member-list">
+            <div class="l-btn-icon">
+              <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
+            </div>
+            <div class="l-btn-text">
+              Lista de Membros
+          </div>
+          </a>
         </div>
-        <div class="col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/familie-member-list">
+        <a class="col-sm-1 text-center">
+          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+        </a>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm-6 col-lg-4">
+          <h2 class="l-title-medium">Família Silva</h2>
+        </div>
+        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
+          <a type="button" class="btn btn-info l-btn-list" routerLink="/families/family-member-list">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
             </div>
@@ -31,34 +79,8 @@
         <div class="col-sm-6 col-lg-4">
           <h2 class="l-title-medium">Família Silva</h2>
         </div>
-        <div class="col-sm-3 d-sm-none d-lg-block">
-          <p class="l-title-small">Membros: <strong>03</strong></p>
-        </div>
-        <div class="col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/familie-member-list">
-            <div class="l-btn-icon">
-              <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
-            </div>
-            <div class="l-btn-text">
-              Lista de Membros
-            </div>
-          </a>
-        </div>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-        </a>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-6 col-lg-4">
-          <h2 class="l-title-medium">Família Silva</h2>
-        </div>
-        <div class="col-sm-3 d-sm-none d-lg-block">
-          <p class="l-title-small">Membros: <strong>03</strong></p>
-        </div>
-        <div class="col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/familie-member-list">
+        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
+          <a type="button" class="btn btn-info l-btn-list" routerLink="/families/family-member-list">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
             </div>
