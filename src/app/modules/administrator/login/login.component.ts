@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   logToApp() {
-    this.router.navigateByUrl('/families');
+    this.router.navigateByUrl('/');
   }
 
 }

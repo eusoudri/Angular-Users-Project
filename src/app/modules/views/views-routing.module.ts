@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FamiliesComponent } from './families/families.component';
+import { ContainerMainComponent } from './container-main/container-main.component';
 import { FamilyListComponent } from './family-list/family-list.component';
 import { FamilyMemberListComponent } from './family-member-list/family-member-list.component';
 
 const routes: Routes = [
-  { path: '', component: FamiliesComponent, children: [
+  { path: '', component: ContainerMainComponent, children: [
   {
     path: '',
     component: FamilyListComponent

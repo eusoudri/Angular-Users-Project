@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../shared/nav/nav.component';
-import { FamiliesComponent } from './families/families.component';
+import { ContainerMainComponent } from './container-main/container-main.component';
 import { FamilyListComponent } from './family-list/family-list.component';
 import { FamilyMemberListComponent } from './family-member-list/family-member-list.component';
 import { ModalAddFamilyComponent } from './modals/modal-add-family/modal-add-family.component';
@@ -19,7 +19,7 @@ import { PaginationComponent } from './../shared/pagination/pagination.component
   declarations: [
     NavComponent,
     HeaderComponent,
-    FamiliesComponent,
+    ContainerMainComponent,
     FamilyMemberListComponent,
     FamilyListComponent,
     ModalAddFamilyComponent,
