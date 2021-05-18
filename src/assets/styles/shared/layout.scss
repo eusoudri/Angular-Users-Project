@@ -232,6 +232,11 @@ label{
       &-item{
         @extend .container-default; 
       }
+
+      &-content{
+        height: 400px;
+        overflow: auto;
+      }
     }
 
     &-add{

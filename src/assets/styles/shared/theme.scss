@@ -48,6 +48,11 @@
       padding: 11px 20px;
       font-size: 12px;
       color: $color-gray;
+
+      &.text-area{
+        border: 1px solid $color-gray;
+        min-height: 120px;
+      }
     }
   }
 
@@ -122,7 +127,7 @@
       border: none;
 
       &.large-height{
-        min-height: 550px;
+        min-height: 600px;
       }
     }
 
@@ -200,6 +205,8 @@
 
         &.active{
           font-weight: 600;
+          background-color: $color-gray-light;
+          border: none;
         }
       }
     }
