@@ -14,6 +14,7 @@ import { ModalAddFamilyMemberRequiredComponent } from './modals/modal-add-family
 import { ModalAddFamilyMemberExtraComponent } from './modals/modal-add-family-member-extra/modal-add-family-member-extra.component';
 import { ModalAddFamilyMemberAttachmentComponent } from './modals/modal-add-family-member-attachment/modal-add-family-member-attachment.component';
 import { PaginationComponent } from './../shared/pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { PaginationComponent } from './../shared/pagination/pagination.component
     CommonModule,
     ViewsRoutingModule,
     HttpClientModule, 
+    FormsModule,
+    ReactiveFormsModule,
     AngularSvgIconModule.forRoot()
   ]
 })

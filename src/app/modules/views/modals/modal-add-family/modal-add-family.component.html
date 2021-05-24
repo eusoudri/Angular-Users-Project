@@ -8,17 +8,21 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-10">
-            <form>
-              <div class="form-group theme">
-                <input type="text" class="form-control" id="name" placeholder="Nome Família">
-              </div>
+            <form [formGroup]="family">
+                <fieldset class="form-group theme">
+                  <input class="form-control"
+                    formControlName="name"
+                    id="name"
+                    type="text"
+                    placeholder="Nome Família" />
+                </fieldset>
             </form>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-tertiary float-left" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button (click)="teste()" type="button" class="btn btn-primary">Salvar mudanças</button>
       </div>
     </div>
   </div>
