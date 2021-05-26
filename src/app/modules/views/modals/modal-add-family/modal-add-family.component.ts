@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { Family } from '../../../../models/families';
+import { MatarazzoService } from '../../../../service/matarazzo.service';
 
 @Component({
   selector: 'app-modal-add-family',
@@ -7,21 +8,17 @@ import { FormBuilder, FormGroup } from '@angular/forms'
   styleUrls: ['./modal-add-family.component.scss']
 })
 export class ModalAddFamilyComponent implements OnInit {
-  family: FormGroup;
-  
-  constructor(private fb: FormBuilder) { }
-  
+  family: Family = new Family();
+
+  constructor(private matarazzoService: MatarazzoService) { }
+
   ngOnInit() {
 
-    this.family =  this.fb.group({
-      name: [null]
-    })
+  }
+  submitForm() {
+   
+    this.matarazzoService.postFamily(this.family).subscribe();
+  }
 
-  }
-   teste() {
-    console.log(this.family)
-    
-  }
-  
 
 }

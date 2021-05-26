@@ -19,17 +19,207 @@
                 <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos Necessários</a>
               </li>
             </ul>
-            <form class="tab-content" id="myTabContent">
+            <form [formGroup]="member" class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
-                <app-modal-add-family-member-required></app-modal-add-family-member-required>
+                <!-- Member Required -->
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control"
+                          formControlName="name"
+                          id="nome" 
+                          type="text"
+                          placeholder="Nome*">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="lastName"
+                          id="nome" 
+                          type="text"
+                          placeholder="Sobrenome*">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="col-form-label col-sm-12 pt-0">Sexo*</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
+                        <label class="form-check-label" for="inlineRadio1">Feminino</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
+                        <label class="form-check-label" for="inlineRadio2">Masculino</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="placeBirth"
+                          id="nome" 
+                          type="text" 
+                          placeholder="Local Nascimento*">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="dateBirth"
+                          id="nome" 
+                          type="text"
+                          placeholder="Data Nascimento*">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-check mt-3 mr-sm-2">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                        <label class="form-check-label" for="inlineFormCheck">
+                          Requerente
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <select class="form-control"
+                          formControlName="kinships"
+                          id="input">
+                          <option selected>Grau de Parentesco*</option>
+                          <option>Filho</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-1 position-relative">
+                      <p class="position-center bottom-0">de</p>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group theme">
+                        <select id="inputEstado" class="form-control">
+                          <option selected>Parente*</option>
+                          <option>Filho</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Member Required -->
               </div>
 
               <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
-                <app-modal-add-family-member-extra></app-modal-add-family-member-extra>
+                <!-- Member Extra -->
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="placeMarriege"
+                          id="local-casamento" 
+                          type="text" 
+                          placeholder="Local Casamento">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="dateMarriege"
+                          id="data-casamento" 
+                          type="text"
+                          placeholder="Data Casamento">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                          formControlName="placeDeath"
+                          id="local-obito" 
+                          type="text" 
+                          placeholder="Local Óbito">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group theme">
+                        <input class="form-control" 
+                        formControlName="dateDeath"
+                        id="data-obito" 
+                        type="text"
+                        placeholder="Data Óbito">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-form-items">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <textarea class="form-control text-area" 
+                          formControlName="comment"
+                          id="observation" 
+                          rows="3" 
+                          placeholder="Observações"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Member Extra -->
               </div>
 
               <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
-                <app-modal-add-family-member-attachment></app-modal-add-family-member-attachment>
+                <!-- Member Attachment -->
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        Certidão de Nascimento
+                      </div>
+                      <div class="col-sm-1"></div>
+                      <div class="col-sm-3 offset-md-5 text-center">
+                        <button type="button" class="btn btn-info">
+                          <svg-icon class="l-svg-small l-btn-icon l-svg-color-default" src="assets/img/svg/paperclip.svg"></svg-icon>
+                          Anexar
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-3">
+                      Certidão de Casamento
+                      </div>
+                      <div class="col-sm-1">
+                        <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
+                      </div>
+                      <div class="col-sm-3 offset-md-5 text-center">
+                        <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-3">
+                      Certidão de Óbito
+                      </div>
+                      <div class="col-sm-1">
+                        <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
+                      </div>
+                      <div class="col-sm-3 offset-md-5 text-center">
+                        <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <!-- Member Attachment -->
               </div>
             </form>
           </div>
@@ -38,7 +228,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-tertiary right" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Limpar</button>
-        <button type="button" class="btn btn-primary">Adicionar</button>
+        <button (click)="submitForm()" type="button" class="btn btn-primary">Adicionar</button>
       </div>
     </div>
   </div>

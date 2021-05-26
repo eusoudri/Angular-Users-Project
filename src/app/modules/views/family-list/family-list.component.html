@@ -29,18 +29,21 @@
 <app-modal-add-family></app-modal-add-family>
 
 <div class="l-components">
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Família</strong> adicionada com sucesso!
+  </div>
   <p class="l-title">Lista de Famílias Cadastradas</p>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">
+    <li *ngFor="let family of families" class="list-group-item">
       <div class="row">
         <div class="col-sm-6 col-lg-4">
-          <h2 class="l-title-medium">Família Silva</h2>
+          <h2 class="l-title-medium">{{ family.name }}</h2>
         </div>
         <!-- <div class="col-sm-3 d-sm-none d-lg-block">
           <p class="l-title-small">Membros: <strong>03</strong></p>
         </div> -->
         <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/family-member-list">
+          <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family.id]">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
             </div>
@@ -49,47 +52,7 @@
           </div>
           </a>
         </div>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-        </a>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-6 col-lg-4">
-          <h2 class="l-title-medium">Família Silva</h2>
-        </div>
-        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/family-member-list">
-            <div class="l-btn-icon">
-              <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
-            </div>
-            <div class="l-btn-text">
-              Lista de Membros
-            </div>
-          </a>
-        </div>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-        </a>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-6 col-lg-4">
-          <h2 class="l-title-medium">Família Silva</h2>
-        </div>
-        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" routerLink="/family-member-list">
-            <div class="l-btn-icon">
-              <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
-            </div>
-            <div class="l-btn-text">
-              Lista de Membros
-            </div>
-          </a>
-        </div>
-        <a class="col-sm-1 text-center">
+        <a (click)="deleteFamily(family.id)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
         </a>
       </div>

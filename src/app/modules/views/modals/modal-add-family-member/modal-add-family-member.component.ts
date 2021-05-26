@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-modal-add-family-member',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalAddFamilyMemberComponent implements OnInit {
 
-  constructor() { }
+  member: FormGroup;
+  constructor(private fb: FormBuilder) { }
+  
+  ngOnInit() {
 
-  ngOnInit(): void {
+    this.member =  this.fb.group({
+      name: [null],
+      lastName: [null],
+      gender: [null],
+      dateBirth : [null],
+      placeBirth: [null],
+      dateMarriege: [null],
+      placeMarriege: [null],
+      dateDeath: [null],
+      placeDeath: [null],
+      lineage: [null],
+      maritalStatus: [null],
+      kinships: [null],
+      requered: [null],
+      comment: [null],
+    })
+
+  }
+   submitForm() {
+    console.log(this.member)
+    
   }
 
 }

@@ -6,6 +6,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatarazzoService } from './service/matarazzo.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
     HttpClientModule, 
     AngularSvgIconModule.forRoot()
   ],
-  providers: [],
+  providers: [MatarazzoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
