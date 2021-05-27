@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Family } from '../../../models/families';
 import { MatarazzoService } from '../../../service/matarazzo.service';
 
@@ -8,12 +8,34 @@ import { MatarazzoService } from '../../../service/matarazzo.service';
   styleUrls: ['./family-list.component.scss']
 })
 export class FamilyListComponent implements OnInit {
-
+  addFamilyStatus= false;
   constructor(private matarazzoService: MatarazzoService) { }
 
   public families: Family[]
 
   ngOnInit() {
+    this.getFamiliesList();
+  }
+
+  updateFamilies(families) {
+    this.families = families;
+  }
+
+  updateAlert(alert){
+    this.addFamilyStatus = alert;
+  }
+
+  deleteFamily(id: string){
+    this.matarazzoService.deleteFamily(id)
+    .subscribe(res =>{
+      this.getFamiliesList();
+
+    })
+
+    
+  }
+
+  getFamiliesList(){
     this.matarazzoService.getFamily()
       .subscribe(
         families => {
@@ -21,13 +43,6 @@ export class FamilyListComponent implements OnInit {
         },
         error => console.log(error)
       )
-  }
-
-  deleteFamily(id: string){
-    this.matarazzoService.deleteFamily(id)
-    .subscribe()
-
-    
   }
 
 }

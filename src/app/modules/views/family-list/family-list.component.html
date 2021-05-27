@@ -26,10 +26,10 @@
   </div>
 </div>
 
-<app-modal-add-family></app-modal-add-family>
+<app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" ></app-modal-add-family>
 
 <div class="l-components">
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <div *ngIf="addFamilyStatus == true" class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Família</strong> adicionada com sucesso!
   </div>
   <p class="l-title">Lista de Famílias Cadastradas</p>
