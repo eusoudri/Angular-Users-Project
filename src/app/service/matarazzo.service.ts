@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Family } from '../models/families'
+import { Family } from '../models/families';
+import { Person } from '../models/person';
 
 
 @Injectable({
@@ -34,5 +35,20 @@ export class MatarazzoService {
   public deleteFamily(id : string): Observable<Family> {
     return this.httpClient
     .delete<Family>( `${this.apiUrl}families/${id} `);
+  }
+
+  public getPerson(): Observable<Person[]> {
+    return this.httpClient
+    .get<Person[]>(this.apiUrl + 'people');
+  }
+
+  public postPerson(person : Person): Observable<Person> {
+    return this.httpClient
+    .post<Person>(this.apiUrl + 'people', person);
+  }
+
+  public deletePerson(id : string): Observable<Person> {
+    return this.httpClient
+    .delete<Person>( `${this.apiUrl}people/${id} `);
   }
 }

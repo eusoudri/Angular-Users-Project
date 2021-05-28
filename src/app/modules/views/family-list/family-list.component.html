@@ -25,12 +25,20 @@
     </div>
   </div>
 </div>
+<a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list']">
+  <div class="l-btn-icon">
+    <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
+  </div>
+  <div class="l-btn-text">
+    Lista de Membros
+</div>
+</a>
 
-<app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" ></app-modal-add-family>
+<app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)"></app-modal-add-family>
 
 <div class="l-components">
   <p class="l-title">Lista de Famílias Cadastradas</p>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush l-list-content">
     <li *ngFor="let family of families" class="list-group-item">
       <div class="row">
         <div class="col-sm-6 col-lg-4">

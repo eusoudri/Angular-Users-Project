@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Family } from '../../../models/families';
 import { MatarazzoService } from '../../../service/matarazzo.service';
 
@@ -31,8 +31,6 @@ export class FamilyListComponent implements OnInit {
       this.getFamiliesList();
 
     })
-
-    
   }
 
   getFamiliesList(){
@@ -44,5 +42,4 @@ export class FamilyListComponent implements OnInit {
         error => console.log(error)
       )
   }
-
 }

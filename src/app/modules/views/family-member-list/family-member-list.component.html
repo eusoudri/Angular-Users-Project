@@ -25,64 +25,26 @@
   </div>
 </div>
 
-<app-modal-add-family-member></app-modal-add-family-member>
+<app-modal-add-family-member (alert)="updateAlert($event)" (families)="updatePeople($event)"></app-modal-add-family-member>
 
 <div class="l-components">
   <p class="l-title">Lista de Membros Cadastradas</p>
   <ul class="list-group list-group-flush l-list-content">
-    <li class="list-group-item">
+    <li *ngFor="let person of people" class="list-group-item">
       <div class="row">
         <div class="col-sm-4">
-          <h2 class="l-title-medium">Família Silva</h2>
+          <h2 class="l-title-medium">{{ person.name }}</h2>
         </div>
         <div class="col-sm-3">
-          <p class="l-title-small">Sexo: <strong>Masculino</strong></p>
+          <p class="l-title-small">Sexo: <strong>{{ person.gender }}</strong></p>
         </div>
         <div class="col-sm-3">
-          <p class="l-title-small">Requerente: <strong>Sim</strong></p>
+          <p class="l-title-small">Requerente: <strong>{{ person.requered }}</strong></p>
         </div>
         <a class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
         </a>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-        </a>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-4">
-          <h2 class="l-title-medium">Família Silva</h2>
-        </div>
-        <div class="col-sm-3">
-          <p class="l-title-small">Sexo: <strong>Masculino</strong></p>
-        </div>
-        <div class="col-sm-3">
-          <p class="l-title-small">Requerente: <strong>Sim</strong></p>
-        </div>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
-        </a>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-        </a>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-4">
-          <h2 class="l-title-medium">Família Silva</h2>
-        </div>
-        <div class="col-sm-3">
-          <p class="l-title-small">Sexo: <strong>Masculino</strong></p>
-        </div>
-        <div class="col-sm-3">
-          <p class="l-title-small">Requerente: <strong>Sim</strong></p>
-        </div>
-        <a class="col-sm-1 text-center">
-          <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
-        </a>
-        <a class="col-sm-1 text-center">
+        <a (click)="deletePerson(person.id)"  class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
         </a>
       </div>
