@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms'
 @Component({
   selector: 'app-modal-add-family-member',
   templateUrl: './modal-add-family-member.component.html',
-  styleUrls: ['./modal-add-family-member.component.scss']
 })
 export class ModalAddFamilyMemberComponent implements OnInit {
 

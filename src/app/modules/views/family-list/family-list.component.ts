@@ -5,7 +5,6 @@ import { MatarazzoService } from '../../../service/matarazzo.service';
 @Component({
   selector: 'app-family-list',
   templateUrl: './family-list.component.html',
-  styleUrls: ['./family-list.component.scss']
 })
 export class FamilyListComponent implements OnInit {
   addFamilyStatus= false;
