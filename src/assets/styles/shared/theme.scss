@@ -121,6 +121,12 @@
   }
 
   .modal{
+    &-footer{
+      .btn-primary{
+        min-width: 100px;
+      }
+    }
+
     &-content{
       padding: 20px;
       border-radius: 15px;
@@ -210,6 +216,11 @@
         }
       }
     }
+  }
+
+  .spinner-border{
+    width: 17px;
+    height: 17px;
   }
 
   .text-right{

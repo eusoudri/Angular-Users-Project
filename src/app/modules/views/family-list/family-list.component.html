@@ -29,9 +29,6 @@
 <app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" ></app-modal-add-family>
 
 <div class="l-components">
-  <div *ngIf="addFamilyStatus == true" class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Família</strong> adicionada com sucesso!
-  </div>
   <p class="l-title">Lista de Famílias Cadastradas</p>
   <ul class="list-group list-group-flush">
     <li *ngFor="let family of families" class="list-group-item">

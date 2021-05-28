@@ -23,7 +23,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-tertiary float-left" data-dismiss="modal">Cancelar</button>
-        <button (click)="submitForm()" type="button" data-dismiss="modal" class="btn btn-primary">Adicionar</button>
+        <button (click)="submitForm()" type="button" data-dismiss="modal" class="btn btn-primary">
+          <div *ngIf="isLoader" class="spinner-border text-light" role="status"></div>
+          <span *ngIf="!isLoader">Adicionar</span>
+        </button>
       </div>
     </div>
   </div>
