@@ -21,9 +21,11 @@
   </div>
   <div class="modal-footer">
     <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Cancelar</button>
-    <button (click)="submitForm()" type="button" class="btn btn-primary">
-      <div *ngIf="isLoader" class="spinner-border text-light" role="status"></div>
-      <span *ngIf="!isLoader">Adicionar</span>
+    <button *ngIf="isLoader" type="button" class="btn btn-primary">
+      <div class="spinner-border text-light" role="status"></div>
+    </button>
+    <button *ngIf="!isLoader" (click)="deleteConfirm()" type="button" class="btn btn-primary">
+      <span>Adicionar</span>
     </button>
   </div>
 </div>

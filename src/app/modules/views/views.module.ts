@@ -13,6 +13,7 @@ import { FamilyListComponent } from './family-list/family-list.component';
 import { FamilyMemberListComponent } from './family-member-list/family-member-list.component';
 import { ModalAddFamilyComponent } from './modals/modal-add-family/modal-add-family.component';
 import { ModalAddFamilyMemberComponent } from './modals/modal-add-family-member/modal-add-family-member.component';
+import { ModalAlertComponent } from './modals/modal-alert/modal-alert.component';
 import { PaginationComponent } from './../shared/pagination/pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FamilyListComponent,
     ModalAddFamilyComponent,
     ModalAddFamilyMemberComponent,
+    ModalAlertComponent,
     PaginationComponent
   ],
   imports: [

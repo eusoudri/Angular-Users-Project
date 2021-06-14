@@ -13,7 +13,7 @@
     </div>
     <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
       <div class="l-add">
-        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(template)">
+        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(modalFamily)">
           <div class="l-btn-icon">
             <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
           </div>
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<ng-template #template>
+<ng-template #modalFamily>
   <app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" (close)="closeModal($event)"></app-modal-add-family>
 </ng-template>
 
@@ -51,10 +51,14 @@
           </div>
           </a>
         </div>
-        <a (click)="deleteFamily(family.id)" class="col-sm-1 text-center">
+        <a (click)="deleteModal(modalDelete)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
         </a>
       </div>
+
+      <ng-template #modalDelete>
+        <app-modal-alert (close)="closeModal($event)" (delete)="deleteFamily($event)" [id]="family.id"></app-modal-alert>
+      </ng-template>
     </li>
   </ul>
 </div>

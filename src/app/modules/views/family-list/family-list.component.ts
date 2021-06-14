@@ -1,14 +1,14 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input, EventEmitter } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Family } from '../../../models/families';
 import { MatarazzoService } from '../../../service/matarazzo.service';
-import { ModalAddFamilyComponent } from '../modals/modal-add-family/modal-add-family.component';
 
 @Component({
   selector: 'app-family-list',
   templateUrl: './family-list.component.html',
 })
 export class FamilyListComponent implements OnInit {
+
   addFamilyStatus= false;
   public bsModalRef: BsModalRef;
   constructor(private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
@@ -19,18 +19,19 @@ export class FamilyListComponent implements OnInit {
     this.getFamiliesList();
   }
 
-  openModal(template: TemplateRef<any>) {
-    
-    this.bsModalRef = this.modalService.show(template, {class: 'matarazzo-theme'});
+  openModal(modalFamily: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(modalFamily, {class: 'matarazzo-theme'});
+  }
+  closeModal(){
+    this.bsModalRef.hide();
   }
 
+  deleteModal(modalDelete: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(modalDelete, {class: 'matarazzo-theme'});
+  }
   updateFamilies(families) {
     this.families = families;
     this.closeModal();
-  }
-  
-  closeModal(){
-    this.bsModalRef.hide();
   }
 
   updateAlert(alert){
@@ -41,7 +42,7 @@ export class FamilyListComponent implements OnInit {
     this.matarazzoService.deleteFamily(id)
     .subscribe(res =>{
       this.getFamiliesList();
-
+      this.bsModalRef.hide();
     })
   }
 
