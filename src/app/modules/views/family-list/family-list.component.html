@@ -13,7 +13,7 @@
     </div>
     <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
       <div class="l-add">
-        <a class="btn btn-primary" data-toggle="modal" data-target="#modalFamily">
+        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(template)">
           <div class="l-btn-icon">
             <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
           </div>
@@ -25,16 +25,10 @@
     </div>
   </div>
 </div>
-<a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list']">
-  <div class="l-btn-icon">
-    <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
-  </div>
-  <div class="l-btn-text">
-    Lista de Membros
-</div>
-</a>
 
-<app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)"></app-modal-add-family>
+<ng-template #template>
+  <app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" (close)="closeModal($event)"></app-modal-add-family>
+</ng-template>
 
 <div class="l-components">
   <p class="l-title">Lista de Famílias Cadastradas</p>
@@ -48,7 +42,7 @@
           <p class="l-title-small">Membros: <strong>03</strong></p>
         </div> -->
         <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family.id]">
+          <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family]">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
             </div>

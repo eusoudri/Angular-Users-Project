@@ -1,33 +1,29 @@
-<div class="modal fade" id="modalFamily" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="l-title-header container-default w-100">Família</h1>
-        <p class="l-title container-default w-100">Adicione uma família</p>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-10">
-            <form>
-                <fieldset class="form-group theme">
-                  <input class="form-control"
-                    name="familyName"
-                    id="name"
-                    [(ngModel)]="family.name"
-                    type="text"
-                    placeholder="Nome Família" />
-                </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-tertiary float-left" data-dismiss="modal">Cancelar</button>
-        <button (click)="submitForm()" type="button" data-dismiss="modal" class="btn btn-primary">
-          <div *ngIf="isLoader" class="spinner-border text-light" role="status"></div>
-          <span *ngIf="!isLoader">Adicionar</span>
-        </button>
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="l-title-header container-default w-100">Família</h1>
+    <p class="l-title container-default w-100">Adicione uma família</p>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-10">
+        <form>
+          <fieldset class="form-group theme">
+            <input class="form-control"
+              name="familyName"
+              id="name"
+              [(ngModel)]="family.name"
+              type="text"
+              placeholder="Nome Família" />
+          </fieldset>
+        </form>
       </div>
     </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Cancelar</button>
+    <button (click)="submitForm()" type="button" class="btn btn-primary">
+      <div *ngIf="isLoader" class="spinner-border text-light" role="status"></div>
+      <span *ngIf="!isLoader">Adicionar</span>
+    </button>
   </div>
 </div>

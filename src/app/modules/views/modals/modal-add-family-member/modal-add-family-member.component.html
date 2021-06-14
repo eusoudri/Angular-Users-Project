@@ -19,7 +19,7 @@
                 <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos Necessários</a>
               </li>
             </ul>
-            <form [formGroup]="member" class="tab-content" id="myTabContent">
+            <form class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
                 <!-- Member Required -->
                 <div class="l-form-items">
@@ -27,8 +27,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control"
-                          formControlName="name"
-                          id="nome" 
+                          id="name"
+                          name="name"
+                          [(ngModel)]="person.name"
                           type="text"
                           placeholder="Nome*">
                       </div>
@@ -36,8 +37,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                          formControlName="lastName"
-                          id="nome" 
+                          id="lastName" 
+                          name="lastName"
+                          [(ngModel)]="person.lastName"
                           type="text"
                           placeholder="Sobrenome*">
                       </div>
@@ -60,8 +62,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                          formControlName="placeBirth"
-                          id="nome" 
+                          id="placeBirth" 
+                          name="placeBirth"
+                          [(ngModel)]="person.placeBirth"
                           type="text" 
                           placeholder="Local Nascimento*">
                       </div>
@@ -69,8 +72,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                          formControlName="dateBirth"
-                          id="nome" 
+                          id="dateBirth" 
+                          name="dateBirth" 
+                          [(ngModel)]="person.dateBirth"
                           type="text"
                           placeholder="Data Nascimento*">
                       </div>
@@ -90,7 +94,6 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <select class="form-control"
-                          formControlName="kinships"
                           id="input">
                           <option selected>Grau de Parentesco*</option>
                           <option>Filho</option>
@@ -120,8 +123,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                          formControlName="placeMarriege"
-                          id="local-casamento" 
+                          id="placeMarriege" 
+                          name="placeMarriege" 
+                          [(ngModel)]="person.placeMarriege"
                           type="text" 
                           placeholder="Local Casamento">
                       </div>
@@ -129,8 +133,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                          formControlName="dateMarriege"
-                          id="data-casamento" 
+                          id="dateMarriege" 
+                          name="dateMarriege" 
+                          [(ngModel)]="person.dateMarriege"
                           type="text"
                           placeholder="Data Casamento">
                       </div>
@@ -141,9 +146,10 @@
                   <div class="row">
                     <div class="col-sm-4">
                       <div class="form-group theme">
-                        <input class="form-control" 
-                          formControlName="placeDeath"
-                          id="local-obito" 
+                        <input class="form-control"
+                          id="placeDeath" 
+                          name="placeDeath"
+                          [(ngModel)]="person.placeDeath"
                           type="text" 
                           placeholder="Local Óbito">
                       </div>
@@ -151,8 +157,9 @@
                     <div class="col-sm-4">
                       <div class="form-group theme">
                         <input class="form-control" 
-                        formControlName="dateDeath"
-                        id="data-obito" 
+                        id="dateDeath" 
+                        name="dateDeath" 
+                        [(ngModel)]="person.dateDeath"
                         type="text"
                         placeholder="Data Óbito">
                       </div>
@@ -164,7 +171,6 @@
                     <div class="col-sm-8">
                       <div class="form-group">
                         <textarea class="form-control text-area" 
-                          formControlName="comment"
                           id="observation" 
                           rows="3" 
                           placeholder="Observações"></textarea>

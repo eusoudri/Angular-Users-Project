@@ -1,8 +1,11 @@
 import { ViewsRoutingModule } from './views-routing.module';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ToastrModule } from 'ngx-toastr';
+
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../shared/nav/nav.component';
 import { ContainerMainComponent } from './container-main/container-main.component';
@@ -30,8 +33,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule, 
     FormsModule,
     ReactiveFormsModule,
-    AngularSvgIconModule.forRoot()
-  ]
+    ModalModule.forRoot(),
+    AngularSvgIconModule.forRoot(),
+    ToastrModule.forRoot()
+  ],
+  providers: [
+    BsModalRef
+  ],
+  exports: [ModalAddFamilyComponent],
+  entryComponents: [ModalAddFamilyComponent]
+
 })
 export class ViewsModule { }
 

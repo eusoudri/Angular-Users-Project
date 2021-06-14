@@ -11,7 +11,7 @@ const routes: Routes = [
     component: FamilyListComponent
   },
   {
-    path: 'family-member-list:id',
+    path: 'family-member-list',
     component: FamilyMemberListComponent
   }
 ] }];

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Family } from '../../../models/families';
 import { MatarazzoService } from '../../../service/matarazzo.service';
+import { ModalAddFamilyComponent } from '../modals/modal-add-family/modal-add-family.component';
 
 @Component({
   selector: 'app-family-list',
@@ -8,7 +10,8 @@ import { MatarazzoService } from '../../../service/matarazzo.service';
 })
 export class FamilyListComponent implements OnInit {
   addFamilyStatus= false;
-  constructor(private matarazzoService: MatarazzoService) { }
+  public bsModalRef: BsModalRef;
+  constructor(private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
 
   public families: Family[]
 
@@ -16,8 +19,18 @@ export class FamilyListComponent implements OnInit {
     this.getFamiliesList();
   }
 
+  openModal(template: TemplateRef<any>) {
+    
+    this.bsModalRef = this.modalService.show(template, {class: 'matarazzo-theme'});
+  }
+
   updateFamilies(families) {
     this.families = families;
+    this.closeModal();
+  }
+  
+  closeModal(){
+    this.bsModalRef.hide();
   }
 
   updateAlert(alert){
