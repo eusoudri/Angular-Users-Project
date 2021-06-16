@@ -22,7 +22,7 @@
   }
 
   .form{
-    &-group{
+    &-control{
       &.theme{
         border-bottom: 1px solid $color-gray;
         border-radius: initial;
@@ -30,6 +30,14 @@
 
         input, select{
           padding: 10px;
+        }
+
+        &.is-invalid{
+          border-bottom: 1px solid $color-alert;
+
+          &:focus{
+            box-shadow: none;
+          }
         }
       }
     }

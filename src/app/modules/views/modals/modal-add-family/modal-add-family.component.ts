@@ -23,6 +23,7 @@ export class ModalAddFamilyComponent implements OnInit {
   ) { }
 
   isLoader = false;
+  isInvalid = false;
 
   ngOnInit() {
 
@@ -30,29 +31,40 @@ export class ModalAddFamilyComponent implements OnInit {
   onClose() {
     this.close.emit()
   }
+  isFilled() {
+    const isFilled = this.family.name;
+    if(isFilled) {
+      return true; 
+    }
+  }
   submitForm() {
-    this.isLoader = true;
-    this.matarazzoService.postFamily(this.family).subscribe(      
-      success => {
-        this.matarazzoService.getFamily()
-        .subscribe(
-          res => {
-            this.isLoader = false;
-            this.families.emit(res)
-            this.family = new Family();
-            this.toastr.success('Família adicionada com sucesso!');
-          },
-          error => {
-            this.isLoader = false;
-            this.toastr.error('Erro! Tente novamente');
-          }
-        )
-      },
-      errors => {
-        this.isLoader = false;
-        this.toastr.error('Erro! Tente novamente');
+    if (this.isFilled()) {
+      this.isLoader = true;
+      
+      this.matarazzoService.postFamily(this.family).subscribe(      
+        success => {
+          this.matarazzoService.getFamily()
+          .subscribe(
+            res => {
+              this.isLoader = false;
+              this.families.emit(res)
+              this.family = new Family();
+              this.toastr.success('Família adicionada com sucesso!');
+            },
+            error => {
+              this.isLoader = false;
+              this.toastr.error('Erro! Tente novamente');
+            }
+          )
+        },
+        errors => {
+          this.isLoader = false;
+          this.toastr.error('Erro! Tente novamente');
+        }
+      )
+    } else {
+        this.isInvalid = true;
       }
-    );
   }
 
 
