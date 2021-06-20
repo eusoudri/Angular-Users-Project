@@ -14,6 +14,7 @@ export class ModalAddFamilyMemberComponent implements OnInit {
   @Output() people = new EventEmitter();
   personStatus: boolean = false;
   person: Person = new Person();
+  genderOp: any[];
   private router: Router;
   constructor(
     private matarazzoService: MatarazzoService,
@@ -22,36 +23,56 @@ export class ModalAddFamilyMemberComponent implements OnInit {
   ) { }
   
   isLoader = false;
+  isInvalid = false;
 
   ngOnInit() {
-
+    this.genderOp = this.matarazzoService.getGender();
   }
   onClose() {
     this.bsModalRef.hide();
   }
-  submitForm() {
-    this.isLoader = true;
-    this.matarazzoService.postPerson(this.person).subscribe(      
-      success => {
-        this.matarazzoService.getPerson()
-        .subscribe(
-          res => {
-            this.isLoader = false;
-            this.people.emit(res)
-            this.person = new Person();
-            this.toastr.success('Membro adicionado com sucesso!');
-          },
-          error => {
-            this.isLoader = false;
-            this.toastr.error('Erro! Tente novamente');
-          }
-        )
-      },
-      errors => {
-        this.isLoader = false;
-        this.toastr.error('Erro! Tente novamente');
-      }
-    );
-  }
+  isFilled() {
+    debugger
+    const isFilled = 
+    this.person.name;
+    this.person.lastName;
+    this.person.gender;
+    this.person.dateBirth;
+    this.person.placeBirth;
+    this.person.relative;
+    this.person.kinships;
+    this.person.requered;
 
+    if(isFilled) {
+      return true; 
+    }
+  }
+  submitForm() {
+    if (this.isFilled()) {
+      this.isLoader = true;
+      this.matarazzoService.postPerson(this.person).subscribe(      
+        success => {
+          this.matarazzoService.getPerson()
+          .subscribe(
+            res => {
+              this.isLoader = false;
+              this.people.emit(res)
+              this.person = new Person();
+              this.toastr.success('Membro adicionado com sucesso!');
+            },
+            error => {
+              this.isLoader = false;
+              this.toastr.error('Erro! Tente novamente');
+            }
+          )
+        },
+        errors => {
+          this.isLoader = false;
+          this.toastr.error('Erro! Tente novamente');
+        }
+      );
+    } else {
+      this.isInvalid = true;
+    }
+  }
 }

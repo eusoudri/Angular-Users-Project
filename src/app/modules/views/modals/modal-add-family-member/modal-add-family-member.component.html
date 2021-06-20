@@ -25,34 +25,41 @@
                 <div class="l-form-items">
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control"
+                      <div class="form-group">
+                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
                           id="name"
                           name="name"
                           [(ngModel)]="person.name"
                           type="text"
                           placeholder="Nome*">
+                          <div *ngIf="isInvalid" class="invalid-feedback">
+                            Preencha o nome
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
                           id="lastName" 
                           name="lastName"
                           [(ngModel)]="person.lastName"
                           type="text"
                           placeholder="Sobrenome*">
+                          <div *ngIf="isInvalid" class="invalid-feedback">
+                            Preencha o sobrenome
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label class="col-form-label col-sm-12 pt-0">Sexo*</label>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-                        <label class="form-check-label" for="inlineRadio1">Feminino</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-                        <label class="form-check-label" for="inlineRadio2">Masculino</label>
+                      <div class="form-check form-check-inline" *ngFor="let item of genderOp">
+                        <input class="form-check-input" [ngClass]="{'is-invalid': isInvalid === true}"
+                          type="radio" 
+                          name="inlineRadioOptions" 
+                          id="inlineRadio" 
+                          [(ngModel)]="person.gender"
+                          [value]="item.value">
+                        <label class="form-check-label" for="inlineRadio1">{{item.desc}}</label>
                       </div>
                     </div>
                   </div>
@@ -60,28 +67,34 @@
                 <div class="l-form-items">
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
                           id="placeBirth" 
                           name="placeBirth"
                           [(ngModel)]="person.placeBirth"
                           type="text" 
                           placeholder="Local Nascimento*">
+                          <div *ngIf="isInvalid" class="invalid-feedback">
+                            Preencha o local de nascimento
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
                           id="dateBirth" 
                           name="dateBirth" 
                           [(ngModel)]="person.dateBirth"
                           type="text"
                           placeholder="Data Nascimento*">
+                          <div *ngIf="isInvalid" class="invalid-feedback">
+                            Preencha a data de nascimento
+                          </div>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-check mt-3 mr-sm-2">
-                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck" [ngClass]="{'is-invalid': isInvalid === true}">
                         <label class="form-check-label" for="inlineFormCheck">
                           Requerente
                         </label>
@@ -92,23 +105,34 @@
                 <div class="l-form-items">
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <select class="form-control"
+                      <div class="form-group">
+                        <select class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
+                          [(ngModel)]="person.kinships"
+                          name="kinship"
                           id="input">
-                          <option selected>Grau de Parentesco*</option>
-                          <option>Filho</option>
+                          <option  selected>Grau de Parentesco*</option>
+                          <option [value]="person.kinships">Filho</option>
                         </select>
+                        <div *ngIf="isInvalid" class="invalid-feedback">
+                          Preencha a data de nascimento
+                        </div>
                       </div>
                     </div>
                     <div class="col-sm-1 position-relative">
                       <p class="position-center bottom-0">de</p>
                     </div>
                     <div class="col-sm-3">
-                      <div class="form-group theme">
-                        <select id="inputEstado" class="form-control">
+                      <div class="form-group">
+                        <select id="inputEstado" [ngClass]="{'is-invalid': isInvalid === true}"
+                          name="relative"
+                          [(ngModel)]="person.relative"
+                          class="form-control theme">
                           <option selected>Parente*</option>
-                          <option>Filho</option>
+                          <option [value]="person.relative">Filho</option>
                         </select>
+                        <div *ngIf="isInvalid" class="invalid-feedback">
+                          Preencha a data de nascimento
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -121,8 +145,8 @@
                 <div class="l-form-items">
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" 
                           id="placeMarriege" 
                           name="placeMarriege" 
                           [(ngModel)]="person.placeMarriege"
@@ -131,8 +155,8 @@
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" 
                           id="dateMarriege" 
                           name="dateMarriege" 
                           [(ngModel)]="person.dateMarriege"
@@ -145,8 +169,8 @@
                 <div class="l-form-items">
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control"
+                      <div class="form-group">
+                        <input class="form-control theme"
                           id="placeDeath" 
                           name="placeDeath"
                           [(ngModel)]="person.placeDeath"
@@ -155,8 +179,8 @@
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div class="form-group theme">
-                        <input class="form-control" 
+                      <div class="form-group">
+                        <input class="form-control theme" 
                         id="dateDeath" 
                         name="dateDeath" 
                         [(ngModel)]="person.dateDeath"

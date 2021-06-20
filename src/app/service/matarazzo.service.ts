@@ -51,4 +51,11 @@ export class MatarazzoService {
     return this.httpClient
     .delete<Person>( `${this.apiUrl}people/${id} `);
   }
+
+  public getGender() {
+    return [
+      { value: 'f', desc: 'Feminino' },
+      { value: 'm', desc: 'Masculino' }
+    ]
+  }
 }
