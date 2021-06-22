@@ -54,8 +54,8 @@ export class MatarazzoService {
 
   public getGender() {
     return [
-      { value: 'f', desc: 'Feminino' },
-      { value: 'm', desc: 'Masculino' }
+      { value: 'F', desc: 'Feminino' },
+      { value: 'M', desc: 'Masculino' }
     ]
   }
 }

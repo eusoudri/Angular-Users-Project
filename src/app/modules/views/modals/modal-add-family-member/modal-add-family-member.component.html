@@ -1,265 +1,246 @@
-<div class="modal fade" id="modalMember" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content large-height">
-      <div class="modal-header">
-        <h1 class="l-title-header container-default w-100">Novo Membro</h1>
-        <p class="l-title container-default w-100">Adicione um novo membro da família</p>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-12">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="true">Dados Obrigatórios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="extra-tab" data-toggle="tab" href="#extra" role="tab" aria-controls="extra" aria-selected="false">Dados Extras</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos Necessários</a>
-              </li>
-            </ul>
-            <form class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
-                <!-- Member Required -->
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-                          id="name"
-                          name="name"
-                          [(ngModel)]="person.name"
-                          type="text"
-                          placeholder="Nome*">
-                          <div *ngIf="isInvalid" class="invalid-feedback">
-                            Preencha o nome
-                          </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-                          id="lastName" 
-                          name="lastName"
-                          [(ngModel)]="person.lastName"
-                          type="text"
-                          placeholder="Sobrenome*">
-                          <div *ngIf="isInvalid" class="invalid-feedback">
-                            Preencha o sobrenome
-                          </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <label class="col-form-label col-sm-12 pt-0">Sexo*</label>
-                      <div class="form-check form-check-inline" *ngFor="let item of genderOp">
-                        <input class="form-check-input" [ngClass]="{'is-invalid': isInvalid === true}"
-                          type="radio" 
-                          name="inlineRadioOptions" 
-                          id="inlineRadio" 
-                          [(ngModel)]="person.gender"
-                          [value]="item.value">
-                        <label class="form-check-label" for="inlineRadio1">{{item.desc}}</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-                          id="placeBirth" 
-                          name="placeBirth"
-                          [(ngModel)]="person.placeBirth"
-                          type="text" 
-                          placeholder="Local Nascimento*">
-                          <div *ngIf="isInvalid" class="invalid-feedback">
-                            Preencha o local de nascimento
-                          </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-                          id="dateBirth" 
-                          name="dateBirth" 
-                          [(ngModel)]="person.dateBirth"
-                          type="text"
-                          placeholder="Data Nascimento*">
-                          <div *ngIf="isInvalid" class="invalid-feedback">
-                            Preencha a data de nascimento
-                          </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-check mt-3 mr-sm-2">
-                        <input class="form-check-input" type="checkbox" id="inlineFormCheck" [ngClass]="{'is-invalid': isInvalid === true}">
-                        <label class="form-check-label" for="inlineFormCheck">
-                          Requerente
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <select class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-                          [(ngModel)]="person.kinships"
-                          name="kinship"
-                          id="input">
-                          <option  selected>Grau de Parentesco*</option>
-                          <option [value]="person.kinships">Filho</option>
-                        </select>
-                        <div *ngIf="isInvalid" class="invalid-feedback">
-                          Preencha a data de nascimento
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-1 position-relative">
-                      <p class="position-center bottom-0">de</p>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <select id="inputEstado" [ngClass]="{'is-invalid': isInvalid === true}"
-                          name="relative"
-                          [(ngModel)]="person.relative"
-                          class="form-control theme">
-                          <option selected>Parente*</option>
-                          <option [value]="person.relative">Filho</option>
-                        </select>
-                        <div *ngIf="isInvalid" class="invalid-feedback">
-                          Preencha a data de nascimento
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Member Required -->
-              </div>
 
-              <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
-                <!-- Member Extra -->
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" 
-                          id="placeMarriege" 
-                          name="placeMarriege" 
-                          [(ngModel)]="person.placeMarriege"
-                          type="text" 
-                          placeholder="Local Casamento">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" 
-                          id="dateMarriege" 
-                          name="dateMarriege" 
-                          [(ngModel)]="person.dateMarriege"
-                          type="text"
-                          placeholder="Data Casamento">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme"
-                          id="placeDeath" 
-                          name="placeDeath"
-                          [(ngModel)]="person.placeDeath"
-                          type="text" 
-                          placeholder="Local Óbito">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control theme" 
-                        id="dateDeath" 
-                        name="dateDeath" 
-                        [(ngModel)]="person.dateDeath"
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content large-height ">
+    <div class="modal-header">
+      <h1 class="l-title-header container-default w-100">Novo Membro</h1>
+      <p class="l-title container-default w-100">Adicione um novo membro da família</p>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="true">Dados Obrigatórios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="extra-tab" data-toggle="tab" href="#extra" role="tab" aria-controls="extra" aria-selected="false">Dados Extras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos Necessários</a>
+            </li>
+          </ul>
+          <form class="tab-content" id="myTabContent" [formGroup]="form">
+            <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
+              <!-- Member Required -->
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid}"
+                        id="firstName"
+                        formControlName="firstName"
                         type="text"
-                        placeholder="Data Óbito">
-                      </div>
+                        placeholder="Nome*">
+                        <div *ngIf="isInvalid" class="invalid-feedback">
+                          Preencha o nome
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                        id="lastName" 
+                        formControlName="lastName"
+                        type="text"
+                        placeholder="Sobrenome">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="col-form-label col-sm-12 pt-0">Sexo</label>
+                    <div class="form-check form-check-inline" *ngFor="let item of genderOp">
+                      <input class="form-check-input" 
+                        type="radio" 
+                        formControlName="gender"
+                        id="inlineRadio" 
+                        [value]="item.value">
+                      <label class="form-check-label" for="inlineRadio1">{{item.desc}}</label>
                     </div>
                   </div>
                 </div>
-                <div class="l-form-items">
-                  <div class="row">
-                    <div class="col-sm-8">
-                      <div class="form-group">
-                        <textarea class="form-control text-area" 
-                          id="observation" 
-                          rows="3" 
-                          placeholder="Observações"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Member Extra -->
               </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                        id="birthPlace" 
+                        formControlName="birthPlace"
+                        type="text" 
+                        placeholder="Local Nascimento">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                        id="birthDate" 
+                        formControlName="birthDate"
+                        type="text"
+                        placeholder="Data Nascimento">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-check mt-3 mr-sm-2">
+                      <input class="form-check-input" 
+                        type="checkbox" 
+                        formControlName="applicant"
+                        id="inlineFormCheck">
+                      <label class="form-check-label" for="inlineFormCheck">
+                        Requerente
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <select class="form-control theme"
+                        formControlName="kinships"
+                        placeholder="Grau de Parentesco"
+                        id="input">
+                        <option [value]="person.kinships">Filho</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-1 position-relative">
+                    <p class="position-center bottom-0">de</p>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <select class="form-control theme"
+                        formControlName="kin"
+                        placeholder="Parente"
+                        id="inputEstado">
+                        <option [value]="person.kin">José</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Member Required -->
+            </div>
 
-              <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
-                <!-- Member Attachment -->
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-3">
-                        Certidão de Nascimento
-                      </div>
-                      <div class="col-sm-1"></div>
-                      <div class="col-sm-3 offset-md-5 text-center">
-                        <button type="button" class="btn btn-info">
-                          <svg-icon class="l-svg-small l-btn-icon l-svg-color-default" src="assets/img/svg/paperclip.svg"></svg-icon>
-                          Anexar
-                        </button>
-                      </div>
+            <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
+              <!-- Member Extra -->
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                        id="marriegePlace" 
+                        formControlName="marriegePlace"
+                        type="text" 
+                        placeholder="Local Casamento">
                     </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-3">
-                      Certidão de Casamento
-                      </div>
-                      <div class="col-sm-1">
-                        <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
-                      </div>
-                      <div class="col-sm-3 offset-md-5 text-center">
-                        <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                        id="marriegeDate" 
+                        formControlName="marriegeDate"
+                        type="text"
+                        placeholder="Data Casamento">
                     </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-3">
-                      Certidão de Óbito
-                      </div>
-                      <div class="col-sm-1">
-                        <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
-                      </div>
-                      <div class="col-sm-3 offset-md-5 text-center">
-                        <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <!-- Member Attachment -->
+                  </div>
+                </div>
               </div>
-            </form>
-          </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme"
+                        id="deathPlace" 
+                        formControlName="deathPlace"
+                        type="text" 
+                        placeholder="Local Óbito">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input class="form-control theme" 
+                      id="deathDate" 
+                      formControlName="deathDate"
+                      type="text"
+                      placeholder="Data Óbito">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <textarea class="form-control text-area" 
+                        id="observation" 
+                        rows="3" 
+                        formControlName="note"
+                        placeholder="Observações"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Member Extra -->
+            </div>
+
+            <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
+              <!-- Member Attachment -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      Certidão de Nascimento
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-3 offset-md-5 text-center">
+                      <button type="button" class="btn btn-info">
+                        <svg-icon class="l-svg-small l-btn-icon l-svg-color-default" src="assets/img/svg/paperclip.svg"></svg-icon>
+                        Anexar
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col-sm-3">
+                    Certidão de Casamento
+                    </div>
+                    <div class="col-sm-1">
+                      <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
+                    </div>
+                    <div class="col-sm-3 offset-md-5 text-center">
+                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col-sm-3">
+                    Certidão de Óbito
+                    </div>
+                    <div class="col-sm-1">
+                      <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
+                    </div>
+                    <div class="col-sm-3 offset-md-5 text-center">
+                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- Member Attachment -->
+            </div>
+          </form>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-tertiary right" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Limpar</button>
-        <button (click)="submitForm()" type="button" class="btn btn-primary">Adicionar</button>
-      </div>
+    </div>
+    <div class="modal-footer"> 
+      <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Cancelar</button>
+      <button *ngIf="isLoader" type="button" class="btn btn-primary">
+        <div  class="spinner-border text-light" role="status"></div>
+      </button>
+      <button *ngIf="!isLoader" (click)="submitForm()" type="button" class="btn btn-primary">
+        <span >Adicionar</span>
+      </button>
     </div>
   </div>
 </div>

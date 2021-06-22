@@ -1,16 +1,18 @@
 export class Person{
-  name: string = "";
+  firstName: string = "";
   lastName: string = "";
   gender: string = "f";
-  dateBirth : Date;
-  placeBirth: string = "";
-  dateMarriege: Date;
-  placeMarriege: string = "";
-  dateDeath: Date;
-  placeDeath: string = "";
+  birthDate : Date;
+  birthPlace: string = "";
+  marriegeDate: Date;
+  marriegePlace: string = "";
+  deathDate: Date;
+  deathPlace: string = "";
   lineage: string = "";
   maritalStatus: string = "";
   kinships: string = "";
-  relative: string = "";
-  requered: boolean;
+  kin: string = "";
+  applicant: boolean;
+  note: string = "";
+  familyId: string = "";
 }

@@ -5,8 +5,12 @@
   <h1 class="l-title-header container-default w-100">
     Excluir
   </h1>
-  <p class="l-title container-default w-100">Você tem certeza que deseja deletar essa família?</p>
-  <div class="modal-footer offset-lg-1 col-sm-8">
+  <p class="l-title container-default w-100">
+    Você tem certeza que deseja deletar
+    <span *ngIf="activatedRoute == 'Membros'">esse membro?</span>
+    <span *ngIf="activatedRoute == 'Famílias'">essa família?</span>
+  </p>
+  <div class="modal-footer offset-lg-2 col-sm-8">
     <button (click)="onClose()" type="button" class="btn btn-tertiary">Cancelar</button>
     <button *ngIf="isLoader" type="button" class="btn btn-primary">
       <div class="spinner-border text-light" role="status"></div>

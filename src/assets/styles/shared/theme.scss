@@ -129,9 +129,14 @@
   }
 
   .modal{
+    &-dialog{
+      &.modal-large{
+        max-width: 800px;
+      }
+    }
     &-footer{
       .btn-primary{
-        min-width: 100px;
+        min-width: 150px;
       }
     }
 

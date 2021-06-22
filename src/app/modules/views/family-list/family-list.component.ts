@@ -8,7 +8,6 @@ import { MatarazzoService } from '../../../service/matarazzo.service';
   templateUrl: './family-list.component.html',
 })
 export class FamilyListComponent implements OnInit {
-
   addFamilyStatus= false;
   public bsModalRef: BsModalRef;
   constructor(private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
@@ -23,6 +22,7 @@ export class FamilyListComponent implements OnInit {
     this.bsModalRef = this.modalService.show(modalFamily, {class: 'matarazzo-theme'});
   }
   closeModal(){
+    debugger
     this.bsModalRef.hide();
   }
 

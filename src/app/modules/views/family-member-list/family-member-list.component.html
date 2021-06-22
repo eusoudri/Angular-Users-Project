@@ -12,7 +12,7 @@
     </div>
     <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
       <div class="l-add">
-        <a class="btn btn-primary" data-toggle="modal" data-target="#modalMember">
+        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(modalMember)">
           <div class="l-btn-icon">
             <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
           </div>
@@ -25,7 +25,9 @@
   </div>
 </div>
 
-<app-modal-add-family-member (alert)="updateAlert($event)" (families)="updatePeople($event)"></app-modal-add-family-member>
+<ng-template #modalMember>
+  <app-modal-add-family-member  (people)="updatePeople($event)" (close)="closeModal($event)" [familyId]="id"></app-modal-add-family-member>
+</ng-template>
 
 <div class="l-components">
   <p class="l-title">Lista de Membros Cadastradas</p>
@@ -33,24 +35,34 @@
     <li *ngFor="let person of people" class="list-group-item">
       <div class="row">
         <div class="col-sm-4">
-          <h2 class="l-title-medium">{{ person.name }}</h2>
+          <h2 class="l-title-medium">{{ person.firstName }}</h2>
         </div>
         <div class="col-sm-3">
-          <p class="l-title-small">Sexo: <strong>{{ person.gender }}</strong></p>
+          <p class="l-title-small">Sexo: 
+            <strong *ngIf="person.gender.toUpperCase() === 'M'">Masculino</strong>
+            <strong *ngIf="person.gender.toUpperCase() === 'F'">Feminino</strong>
+          </p>
         </div>
         <div class="col-sm-3">
-          <p class="l-title-small">Requerente: <strong>{{ person.requered }}</strong></p>
+          <p class="l-title-small">Requerente: 
+            <strong *ngIf="person.applicant === false">Não</strong>
+            <strong *ngIf="person.applicant === true">Sim</strong></p>
         </div>
         <a class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
         </a>
-        <a (click)="deletePerson(person.id)"  class="col-sm-1 text-center">
+        <a (click)="deleteModal(modalDelete)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
         </a>
       </div>
+
+      <ng-template #modalDelete>
+        <app-modal-alert (close)="closeModal($event)" (delete)="deletePerson($event)" [id]="person.id"></app-modal-alert>
+      </ng-template>
     </li>
   </ul>
 </div>
+
 <div class="row">
   <div class="col-sm-7">
     <a class="btn btn-primary mb-4" data-toggle="modal" data-target="#modalFamilie" routerLink="/modal-add-family-member">

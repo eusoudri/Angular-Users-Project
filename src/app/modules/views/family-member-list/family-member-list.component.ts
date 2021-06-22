@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Person } from '../../../models/person';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { MatarazzoService } from '../../../service/matarazzo.service';
 
 @Component({
@@ -7,19 +9,24 @@ import { MatarazzoService } from '../../../service/matarazzo.service';
   templateUrl: './family-member-list.component.html',
 })
 export class FamilyMemberListComponent implements OnInit {
-
+  public id: string;
   addPersonStatus= false;
-
-  constructor(private matarazzoService: MatarazzoService) { }
+  public bsModalRef: BsModalRef;
+  constructor(private route: ActivatedRoute, private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
 
   public people: Person[]
 
   ngOnInit() {
     this.getMemberList();
+    this.route.params.subscribe(p => 
+      {
+        this.id = p['id'];
+      });
   }
 
   updatePeople(people) {
     this.people = people;
+    this.closeModal();
   }
 
   updateAlert(alert){
@@ -27,11 +34,22 @@ export class FamilyMemberListComponent implements OnInit {
   }
 
   deletePerson(id: string){
+    debugger
     this.matarazzoService.deletePerson(id)
     .subscribe(res =>{
       this.getMemberList();
-
+      this.bsModalRef.hide();
     })
+  }
+  openModal(modalMember: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(modalMember, {class: 'matarazzo-theme'});
+  }
+  closeModal(){
+    this.bsModalRef.hide();
+  }
+  
+  deleteModal(modalDelete: TemplateRef<any>) {
+    this.bsModalRef = this.modalService.show(modalDelete, {class: 'matarazzo-theme'});
   }
 
   getMemberList(){

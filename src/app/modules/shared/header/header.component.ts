@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   activatedRoute: string = "";
   
   private routesDic = [
-    ['/family-member-list','Membros'],
+    ['/family-member-list/','Membros'],
     ['/','Famílias'],
   ]
   constructor(private router: Router) {}

@@ -29,7 +29,6 @@
 <ng-template #modalFamily>
   <app-modal-add-family (alert)="updateAlert($event)" (families)="updateFamilies($event)" (close)="closeModal($event)"></app-modal-add-family>
 </ng-template>
-
 <div class="l-components">
   <p class="l-title">Lista de Famílias Cadastradas</p>
   <ul class="list-group list-group-flush l-list-content">
@@ -42,7 +41,7 @@
           <p class="l-title-small">Membros: <strong>03</strong></p>
         </div> -->
         <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
-          <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family]">
+          <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family.id]">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
             </div>
