@@ -15,6 +15,7 @@ export class FamilyMemberListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
 
   public people: Person[]
+  isLoader = false;
 
   ngOnInit() {
     this.getMemberList();
@@ -42,7 +43,7 @@ export class FamilyMemberListComponent implements OnInit {
     })
   }
   openModal(modalMember: TemplateRef<any>) {
-    this.bsModalRef = this.modalService.show(modalMember, {class: 'matarazzo-theme'});
+    this.bsModalRef = this.modalService.show(modalMember, {class: 'matarazzo-theme modal-lg'});
   }
   closeModal(){
     this.bsModalRef.hide();
@@ -53,10 +54,12 @@ export class FamilyMemberListComponent implements OnInit {
   }
 
   getMemberList(){
+    this.isLoader = true;
     this.matarazzoService.getPerson()
       .subscribe(
         people => {
           this.people = people;
+          this.isLoader = false;
         },
         error => console.log(error)
       )

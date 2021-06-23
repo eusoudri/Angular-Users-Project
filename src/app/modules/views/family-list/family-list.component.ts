@@ -12,7 +12,8 @@ export class FamilyListComponent implements OnInit {
   public bsModalRef: BsModalRef;
   constructor(private matarazzoService: MatarazzoService, private modalService: BsModalService) { }
 
-  public families: Family[]
+  public families: Family[];
+  isLoader = false;
 
   ngOnInit() {
     this.getFamiliesList();
@@ -47,10 +48,12 @@ export class FamilyListComponent implements OnInit {
   }
 
   getFamiliesList(){
+    this.isLoader = true;
     this.matarazzoService.getFamily()
       .subscribe(
         families => {
           this.families = families;
+          this.isLoader = false;
         },
         error => console.log(error)
       )
