@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../shared/nav/nav.component';
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     AngularSvgIconModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     BsModalRef

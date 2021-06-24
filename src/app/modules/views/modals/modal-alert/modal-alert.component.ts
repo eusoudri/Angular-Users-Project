@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class ModalAlertComponent implements OnInit {
   activatedRoute: string = "";
   @Input() id;
+  @Input() person;
   @Output() close = new EventEmitter();
   @Output() delete = new EventEmitter();
   private routesDic = [
@@ -31,6 +32,8 @@ export class ModalAlertComponent implements OnInit {
     this.close.emit()
   }
   deleteConfirm() {
+    debugger
+    this.isLoader = true;
     this.delete.emit(this.id)
   }
   private resolveRoute (rota:string):void{

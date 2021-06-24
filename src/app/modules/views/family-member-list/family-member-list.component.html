@@ -63,8 +63,8 @@
         </div>
         <div class="col-sm-3">
           <p class="l-title-small">Requerente: 
-            <strong *ngIf="person.applicant === false">Não</strong>
-            <strong *ngIf="person.applicant === true">Sim</strong></p>
+            <strong *ngIf="!person.applicant">Não</strong>
+            <strong *ngIf="person.applicant">Sim</strong></p>
         </div>
         <a class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
@@ -75,7 +75,7 @@
       </div>
 
       <ng-template #modalDelete>
-        <app-modal-alert (close)="closeModal($event)" (delete)="deletePerson($event)" [id]="person.id"></app-modal-alert>
+        <app-modal-alert (close)="closeModal($event)" (delete)="deletePerson($event)" [person]="person" [id]="person.id"></app-modal-alert>
       </ng-template>
     </li>
   </ul>

@@ -37,9 +37,10 @@ export class MatarazzoService {
     .delete<Family>( `${this.apiUrl}families/${id} `);
   }
 
-  public getPerson(): Observable<Person[]> {
+  public getPersonByFamilyId(familyId): Observable<Person[]> {
+    debugger
     return this.httpClient
-    .get<Person[]>(this.apiUrl + 'people');
+    .get<Person[]>(this.apiUrl + 'families/' + familyId + '/people');
   }
 
   public postPerson(person : Person): Observable<Person> {

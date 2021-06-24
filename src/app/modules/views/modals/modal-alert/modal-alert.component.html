@@ -6,9 +6,9 @@
     Excluir
   </h1>
   <p class="l-title container-default w-100">
-    Você tem certeza que deseja deletar
-    <span *ngIf="activatedRoute == 'Membros'">esse membro?</span>
-    <span *ngIf="activatedRoute == 'Famílias'">essa família?</span>
+    Você tem certeza que deseja deletar 
+    <span *ngIf="activatedRoute != 'Famílias'"><strong>{{person.firstName}}</strong>?</span>
+    <span *ngIf="activatedRoute == 'Famílias'"><strong>família {{person}}</strong>?</span>
   </p>
   <div class="modal-footer offset-lg-2 col-sm-8">
     <button (click)="onClose()" type="button" class="btn btn-tertiary">Cancelar</button>

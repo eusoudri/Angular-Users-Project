@@ -41,7 +41,7 @@
   <div *ngIf="isLoader" class="position-center">
     <div  class="spinner-border large text-dark" role="status"></div>
   </div>
-  
+
   <p class="l-title">Lista de Famílias Cadastradas</p>
   <ul class="list-group list-group-flush l-list-content">
     <li *ngFor="let family of families" class="list-group-item">
@@ -59,7 +59,7 @@
             </div>
             <div class="l-btn-text">
               Lista de Membros
-          </div>
+            </div>
           </a>
         </div>
         <a (click)="deleteModal(modalDelete)" class="col-sm-1 text-center">
@@ -68,7 +68,7 @@
       </div>
 
       <ng-template #modalDelete>
-        <app-modal-alert (close)="closeModal($event)" (delete)="deleteFamily($event)" [id]="family.id"></app-modal-alert>
+        <app-modal-alert (close)="closeModal($event)" (delete)="deleteFamily($event)" [person]=family.name [id]="family.id"></app-modal-alert>
       </ng-template>
     </li>
   </ul>

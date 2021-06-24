@@ -119,6 +119,10 @@ label{
     &-title{
       font-size: 13px;
 
+      strong{
+        text-transform: capitalize;
+      }
+
       &.login{
         font-weight: 700;
       }

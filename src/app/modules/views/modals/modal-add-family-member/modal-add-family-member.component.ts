@@ -14,7 +14,6 @@ export class ModalAddFamilyMemberComponent implements OnInit {
   @Output() alert = new EventEmitter();
   @Output() people = new EventEmitter();
   @Output() close = new EventEmitter();
-  
   @Input() familyId;
   person: Person = new Person();
   genderOp: any[];
@@ -43,8 +42,8 @@ export class ModalAddFamilyMemberComponent implements OnInit {
       deathDate: [null],
       deathPlace: [null],
       maritalStatus: [null],
-      kinships: [null],
-      kin: [null],
+      kinships: ['Grau de Parentesco'],
+      kin: ['Parente'],
       applicant: [false],
       note: [null],
       familyId: this.familyId
@@ -63,10 +62,11 @@ export class ModalAddFamilyMemberComponent implements OnInit {
   }
   submitForm() {
     if (this.isFilled()) {
+      debugger
       this.isLoader = true;
       this.matarazzoService.postPerson(this.form.value).subscribe(      
         success => {
-          this.matarazzoService.getPerson()
+          this.matarazzoService.getPersonByFamilyId(this.familyId)
           .subscribe(
             res => {
               this.isLoader = false;

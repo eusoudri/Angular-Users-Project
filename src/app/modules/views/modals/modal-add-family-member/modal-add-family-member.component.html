@@ -50,9 +50,9 @@
                       <input class="form-check-input" 
                         type="radio" 
                         formControlName="gender"
-                        id="inlineRadio" 
+                        id="{{item.value}}" 
                         [value]="item.value">
-                      <label class="form-check-label" for="inlineRadio1">{{item.desc}}</label>
+                      <label class="form-check-label" for="{{item.value}}">{{item.desc}}</label>
                     </div>
                   </div>
                 </div>
@@ -71,6 +71,7 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <input class="form-control theme" 
+                        mask="00/00/0000"
                         id="birthDate" 
                         formControlName="birthDate"
                         type="text"
@@ -80,10 +81,10 @@
                   <div class="col-sm-4">
                     <div class="form-check mt-3 mr-sm-2">
                       <input class="form-check-input" 
+                        id="applicant"
                         type="checkbox" 
-                        formControlName="applicant"
-                        id="inlineFormCheck">
-                      <label class="form-check-label" for="inlineFormCheck">
+                        formControlName="applicant">
+                      <label class="form-check-label" for="applicant">
                         Requerente
                       </label>
                     </div>
@@ -98,6 +99,7 @@
                         formControlName="kinships"
                         placeholder="Grau de Parentesco"
                         id="input">
+                        <option>Grau de Parentesco</option>
                         <option [value]="person.kinships">Filho</option>
                       </select>
                     </div>
@@ -111,6 +113,7 @@
                         formControlName="kin"
                         placeholder="Parente"
                         id="inputEstado">
+                        <option>Parente</option>
                         <option [value]="person.kin">José</option>
                       </select>
                     </div>
@@ -136,6 +139,7 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <input class="form-control theme" 
+                        mask="00/00/0000"
                         id="marriegeDate" 
                         formControlName="marriegeDate"
                         type="text"
@@ -158,6 +162,7 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <input class="form-control theme" 
+                      mask="00/00/0000"
                       id="deathDate" 
                       formControlName="deathDate"
                       type="text"
@@ -208,7 +213,7 @@
                       <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
                     </div>
                     <div class="col-sm-3 offset-md-5 text-center">
-                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
                     </div>
                   </div>
                 </li>
@@ -221,7 +226,7 @@
                       <svg-icon class="l-svg-default l-btn-icon l-svg-color-success" src="assets/img/svg/ok.svg"></svg-icon>
                     </div>
                     <div class="col-sm-3 offset-md-5 text-center">
-                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+                      <svg-icon class="l-svg-default l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
                     </div>
                   </div>
                 </li>

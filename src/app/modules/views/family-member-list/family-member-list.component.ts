@@ -19,10 +19,6 @@ export class FamilyMemberListComponent implements OnInit {
 
   ngOnInit() {
     this.getMemberList();
-    this.route.params.subscribe(p => 
-      {
-        this.id = p['id'];
-      });
   }
 
   updatePeople(people) {
@@ -50,12 +46,17 @@ export class FamilyMemberListComponent implements OnInit {
   }
   
   deleteModal(modalDelete: TemplateRef<any>) {
+    debugger
     this.bsModalRef = this.modalService.show(modalDelete, {class: 'matarazzo-theme'});
   }
 
   getMemberList(){
     this.isLoader = true;
-    this.matarazzoService.getPerson()
+    this.route.params.subscribe(p => 
+      {
+        this.id = p['id'];
+      });
+    this.matarazzoService.getPersonByFamilyId(this.id)
       .subscribe(
         people => {
           this.people = people;
