@@ -5,7 +5,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../shared/nav/nav.component';
@@ -40,6 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularSvgIconModule.forRoot(),
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot(),
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     BsModalRef

@@ -130,8 +130,8 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <input class="form-control theme" 
-                        id="marriegePlace" 
-                        formControlName="marriegePlace"
+                        id="marriagePlace" 
+                        formControlName="marriagePlace"
                         type="text" 
                         placeholder="Local Casamento">
                     </div>
@@ -140,8 +140,8 @@
                     <div class="form-group">
                       <input class="form-control theme" 
                         mask="00/00/0000"
-                        id="marriegeDate" 
-                        formControlName="marriegeDate"
+                        id="marriageDate" 
+                        formControlName="marriageDate"
                         type="text"
                         placeholder="Data Casamento">
                     </div>
@@ -242,8 +242,11 @@
       <button *ngIf="isLoader" type="button" class="btn btn-primary">
         <div  class="spinner-border text-light" role="status"></div>
       </button>
-      <button *ngIf="!isLoader" (click)="submitForm()" type="button" class="btn btn-primary">
-        <span >Adicionar</span>
+      <button *ngIf="!isLoader && !edit" (click)="submitForm()" type="button" class="btn btn-primary">
+        <span>Adicionar</span>
+      </button>
+      <button *ngIf="!isLoader && edit" (click)="editForm()" type="button" class="btn btn-primary">
+        <span>Atualizar</span>
       </button>
     </div>
   </div>

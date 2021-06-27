@@ -52,7 +52,7 @@
         <!-- <div class="col-sm-3 d-sm-none d-lg-block">
           <p class="l-title-small">Membros: <strong>03</strong></p>
         </div> -->
-        <div class="offset-sm-3 col-sm-5 col-lg-4 text-center">
+        <div class="offset-sm-2 col-sm-5 col-lg-4 text-center">
           <a type="button" class="btn btn-info l-btn-list" [routerLink]="['/family-member-list', family.id]">
             <div class="l-btn-icon">
               <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/list.svg"></svg-icon>
@@ -62,10 +62,17 @@
             </div>
           </a>
         </div>
+        <a (click)="openModal(modalEdit, family.id)" class="col-sm-1 text-center">
+          <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
+        </a>
         <a (click)="deleteModal(modalDelete)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
         </a>
       </div>
+
+      <ng-template #modalEdit>
+        <app-modal-add-family (alert)="updateAlert($event)" [edit]="true" (families)="updateFamilies($event)" (close)="closeModal($event)" [family]=family></app-modal-add-family>
+      </ng-template>
 
       <ng-template #modalDelete>
         <app-modal-alert (close)="closeModal($event)" (delete)="deleteFamily($event)" [person]=family.name [id]="family.id"></app-modal-alert>

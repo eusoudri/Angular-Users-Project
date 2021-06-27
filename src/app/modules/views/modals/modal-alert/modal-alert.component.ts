@@ -32,7 +32,6 @@ export class ModalAlertComponent implements OnInit {
     this.close.emit()
   }
   deleteConfirm() {
-    debugger
     this.isLoader = true;
     this.delete.emit(this.id)
   }

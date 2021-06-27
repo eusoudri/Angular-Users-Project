@@ -66,13 +66,17 @@
             <strong *ngIf="!person.applicant">Não</strong>
             <strong *ngIf="person.applicant">Sim</strong></p>
         </div>
-        <a class="col-sm-1 text-center">
+        <a (click)="openModal(modalEdit, person.id)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
         </a>
         <a (click)="deleteModal(modalDelete)" class="col-sm-1 text-center">
           <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
         </a>
       </div>
+
+      <ng-template #modalEdit>
+        <app-modal-add-family-member (people)="updatePeople($event)" [edit]="true" (close)="closeModal($event)" [person]=person></app-modal-add-family-member>
+      </ng-template>
 
       <ng-template #modalDelete>
         <app-modal-alert (close)="closeModal($event)" (delete)="deletePerson($event)" [person]="person" [id]="person.id"></app-modal-alert>

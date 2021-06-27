@@ -1,11 +1,12 @@
 export class Person{
   firstName: string = "";
   lastName: string = "";
+  id: string = "";
   gender: string = "f";
   birthDate : Date;
   birthPlace: string = "";
-  marriegeDate: Date;
-  marriegePlace: string = "";
+  marriageDate: Date;
+  marriagePlace: string = "";
   deathDate: Date;
   deathPlace: string = "";
   lineage: string = "";

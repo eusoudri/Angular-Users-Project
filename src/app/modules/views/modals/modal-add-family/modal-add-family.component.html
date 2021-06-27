@@ -6,14 +6,13 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-sm-10">
-        <form>
+        <form [formGroup]="form">
           <fieldset class="form-group">
             <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
-              name="familyName"
               id="name"
-              [(ngModel)]="family.name"
+              formControlName="name"
               type="text"
-              placeholder="Nome Família" />
+              placeholder="Nome Família*" />
               <div *ngIf="isInvalid" class="invalid-feedback">
                 Preencha o nome da família
               </div>
@@ -27,8 +26,11 @@
     <button *ngIf="isLoader" type="button" class="btn btn-primary">
       <div  class="spinner-border text-light" role="status"></div>
     </button>
-    <button *ngIf="!isLoader" (click)="submitForm()" type="button" class="btn btn-primary">
-      <span >Adicionar</span>
+    <button *ngIf="!isLoader && !edit" (click)="submitForm()" type="button" class="btn btn-primary">
+      <span>Adicionar</span>
+    </button>
+    <button *ngIf="!isLoader && edit" (click)="editForm()" type="button" class="btn btn-primary">
+      <span>Atualizar</span>
     </button>
   </div>
 </div>

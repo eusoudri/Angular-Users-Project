@@ -32,13 +32,17 @@ export class MatarazzoService {
     .post<Family>(this.apiUrl + 'families', family);
   }
 
+  public putFamily(family : Family): Observable<Family> {
+    return this.httpClient
+    .put<Family>(`${this.apiUrl}families/${family.id} `, family);
+  }
+
   public deleteFamily(id : string): Observable<Family> {
     return this.httpClient
     .delete<Family>( `${this.apiUrl}families/${id} `);
   }
 
   public getPersonByFamilyId(familyId): Observable<Person[]> {
-    debugger
     return this.httpClient
     .get<Person[]>(this.apiUrl + 'families/' + familyId + '/people');
   }
@@ -46,6 +50,11 @@ export class MatarazzoService {
   public postPerson(person : Person): Observable<Person> {
     return this.httpClient
     .post<Person>(this.apiUrl + 'people', person);
+  }
+
+  public putPerson(person : Person): Observable<Person> {
+    return this.httpClient
+    .put<Person>(`${this.apiUrl}people/${person.id} `, person);
   }
 
   public deletePerson(id : string): Observable<Person> {

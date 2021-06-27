@@ -20,36 +20,32 @@ export class FamilyMemberListComponent implements OnInit {
   ngOnInit() {
     this.getMemberList();
   }
-
-  updatePeople(people) {
-    this.people = people;
-    this.closeModal();
-  }
-
-  updateAlert(alert){
-    this.addPersonStatus = alert;
-  }
-
-  deletePerson(id: string){
-    debugger
-    this.matarazzoService.deletePerson(id)
-    .subscribe(res =>{
-      this.getMemberList();
-      this.bsModalRef.hide();
-    })
-  }
   openModal(modalMember: TemplateRef<any>) {
     this.bsModalRef = this.modalService.show(modalMember, {class: 'matarazzo-theme modal-lg'});
   }
   closeModal(){
     this.bsModalRef.hide();
   }
-  
   deleteModal(modalDelete: TemplateRef<any>) {
-    debugger
     this.bsModalRef = this.modalService.show(modalDelete, {class: 'matarazzo-theme'});
   }
-
+  updateAlert(alert){
+    this.addPersonStatus = alert;
+  }
+  updatePeople(people) {
+    this.people = people;
+    this.closeModal();
+  }
+  deletePerson(id: string){
+    this.matarazzoService.deletePerson(id)
+    .subscribe(res =>{
+      this.getMemberList();
+      this.bsModalRef.hide();
+    })
+  }
+  editPerson(modalEdit: TemplateRef<any>){
+    this.bsModalRef = this.modalService.show(modalEdit, {class: 'matarazzo-theme'});
+  }
   getMemberList(){
     this.isLoader = true;
     this.route.params.subscribe(p => 

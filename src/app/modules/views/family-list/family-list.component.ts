@@ -23,8 +23,10 @@ export class FamilyListComponent implements OnInit {
     this.bsModalRef = this.modalService.show(modalFamily, {class: 'matarazzo-theme'});
   }
   closeModal(){
-    debugger
     this.bsModalRef.hide();
+  }
+  editFamily(modalEdit: TemplateRef<any>){
+    this.bsModalRef = this.modalService.show(modalEdit, {class: 'matarazzo-theme'});
   }
 
   deleteModal(modalDelete: TemplateRef<any>) {
