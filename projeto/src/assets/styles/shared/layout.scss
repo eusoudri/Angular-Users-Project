@@ -1,0 +1,457 @@
+body{
+  background-color: $color-gray-medium;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: $color-gray;
+
+  &:hover{
+    color: $color-black;
+  }
+}
+
+label{
+  color: $color-black;
+  margin-bottom: 5px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.toast-container {
+  margin-top: 100px;
+  opacity: 0.8;
+}
+
+.default-button-right{
+  position: relative;
+  float: right;
+
+  &:last-child{
+    margin-right: 20px;
+  }
+}
+
+.container{
+  &-default{
+    position: relative;
+    float: left;
+
+    &.breafing{
+      margin-bottom: 10px;
+    }
+
+    &.docs{
+      float: right;
+    }
+  }
+
+  &-absolute{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.position-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.position-center-loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+}
+
+.btn-default{
+  border: none;
+  padding: 11px 20px;
+  border-radius: 16px;
+}
+
+.ml-1{
+  margin-left: 5px;
+}
+
+.matarazzo-theme{
+  .l{
+
+    &-login-container{
+      position: relative;
+      width: 100%;
+
+      .btn-primary{
+        margin-top: 40px;
+        width: 120px;
+      }
+
+      &-item{
+        position: absolute;
+        padding: 50px 100px;
+        background-color: #ffffff;
+        top: 50px;
+        height: 540px;
+        left: 50%;
+        width: 450px;
+        transform: translate(-50%, 0);
+        border-radius: 15px;
+      }
+
+      &-info{
+        margin: 80px 0;
+      }
+    }
+
+    &-password{
+      &-lost{
+        margin-top: 10px;
+        color: $color-gray;
+        text-align: right;
+      }
+    }
+
+    &-register{
+      margin-top: 20px;
+      color: $color-gray;
+    }
+
+    &-main{
+      position: relative;
+      height: 830px;
+    }
+
+    &-header{
+      &.title{
+        @extend .container-default;
+        width: 30%;
+        margin-bottom: 40px;
+      }
+
+      &.info{
+        @extend .container-default;
+        width: 70%;
+        margin-bottom: 40px;
+      }
+
+      &-item{
+        @extend .container-default;
+      }
+    }
+
+    &-loader{
+      &-background{
+        position: absolute;
+        opacity: 0.8;
+        background-color: $color-white;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+      }
+    }
+
+    &-modal{
+      &-item{
+        padding: 10px 0;
+        border-bottom: 1px solid $color-gray-medium;
+        margin-bottom: 15px;
+
+      &-description{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      }
+    }
+
+    &-background-block{
+      position: absolute;
+      width: 100%;
+      height: 255px;
+      background: $color-white;
+      z-index: 10;
+      opacity: 0.7;
+    }
+
+    &-title{
+      font-size: 13px;
+
+      strong{
+        text-transform: capitalize;
+      }
+
+      &.login{
+        font-weight: 700;
+      }
+
+      &-modal{
+        background: $color-gray-medium;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: $color-gray-dark;
+      }
+
+      &-small{
+        font-size: 12px;
+      }
+
+      &-medium{
+        font-size: 13px;
+        text-transform: capitalize;
+      }
+
+      &-header{
+        position: relative;
+        float: left;
+        text-transform: capitalize;
+        font-size: 18px;
+        font-weight: 700;
+
+        &-small{
+          font-size: 13px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &-img-logo{
+      width: 150px;
+      cursor: pointer;
+
+      &:focus{
+        outline: none;
+      }
+    }
+
+
+    &-svg{
+      &-small{
+        svg{
+          width: 12px;
+        }
+      }
+
+      &-medium{
+        svg{
+          width: 18px;
+        }
+      }
+
+      &-large{
+        svg{
+          width: 25px;
+        }
+      }
+
+      &-default{
+        svg{
+          width: 15px;
+        }
+
+        &.doc{
+          svg{
+            width: 16px;
+          }
+        }
+      }
+
+      &-color{
+        &-cancel{
+          svg{
+            fill: $color-primary-light;
+          }
+        }
+
+        &-gray{
+          svg{
+            fill: $color-gray;
+          }
+        }
+
+        &-default{
+          svg{
+            fill: $color-gray-dark;
+          }
+        }
+
+        &-success{
+          svg{
+            fill: $color-success;
+          }
+        }
+
+        &-white{
+          svg{
+            fill: $color-white;
+          }
+        }
+      }
+
+
+    }
+
+    &-btn{
+      &-logout{
+        font-size: 11px;
+        color: $color-gray;
+      }
+
+      &-config{
+        font-size: 13px;
+        color: $color-gray;
+        font-weight: 600;
+      }
+
+      &-list{
+        margin-top: -5px;
+      }
+
+      &-icon{
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      &-text{
+        display: inline-block;
+      }
+
+      &-search{
+        position: absolute;
+        top: 8px;
+        right: 28px;
+        width: 32px;
+        height: 23px;
+        text-align: center;
+      }
+    }
+
+    &-form{
+      &-items{
+        margin-bottom: 20px
+      }
+    }
+
+    &-list{
+      &-item{
+        @extend .container-default; 
+      }
+
+      &-content{
+        height: 540px;
+        overflow: auto;
+
+        &-click{
+          position: absolute;
+          width: 74%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &-add{
+      position: relative;
+      float: right;
+    }
+
+    &-search{
+      position: relative;
+      float: right;
+      width: 100%;
+      
+      .form-control{
+        padding: 10px 25px
+      }
+    }
+
+    &-components{
+      @extend .container-default;
+      width: 100%;
+    }
+
+    &-login{
+      @extend .container-default;
+      width: 100%;
+      padding: 30px 0 30px 60px;
+
+      &:first-child{
+        border-bottom: 2px solid $color-gray-lightness;
+      }
+    }
+
+    &-pagination-bottom{
+      @extend .container-default;
+      width: 100%;
+    }
+
+    &-nav{
+      @extend .container-absolute;
+      border-radius: 30px 0 0 30px;
+      padding: 25px 0;
+      background-color: $color-white;
+    
+      &-logo{
+        @extend .container-default;
+        width: 100%;
+        text-align: center;
+      }
+  
+      &-item{
+        @extend .container-default;
+        width: 100%;
+        padding: 20px 0 20px 20px;
+        margin: 30px 0;
+
+        &-config{
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    &-footer{
+      position: absolute;
+      width: 98%;
+      bottom: 0;
+      left: 0;
+    }
+
+    &-content{
+      @extend .container-absolute;
+      border-radius: 0 30px 30px 0;
+      padding: 45px;
+      background-color: $color-gray-lightness;  
+    }
+
+    &-family-tree{
+      position: absolute;
+      bottom: 30px;
+      right: 45px;
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    .l-login {
+      padding: 30px 0 30px 40px;
+    }
+  }
+}
+
+
+
+
+

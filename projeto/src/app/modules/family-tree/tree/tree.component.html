@@ -1,0 +1,74 @@
+<ng-template #recursive let-p>
+  <ul class="teste" *ngIf="p && p.length">
+    <li *ngFor="let item of p">
+      <a href="javascript:void(0);">
+        <div class="family-tree-container">
+          <div class="family-tree">
+            <div class="family-tree-img">
+              <img *ngIf="item?.gender == 'F'" class="img" src="assets/img/svg/female_icon.svg" alt="matarazzo">
+              <img *ngIf="item?.gender == 'M'" class="img" src="assets/img/svg/male_icon.svg" alt="matarazzo">
+            </div>
+          </div>
+          <div class="family-tree">
+            <h2 class="family-tree-name">{{item.name}}</h2>
+            <span class="family-tree-item">{{item?.birthday | date:'yyyy'}}
+              ( 
+                {{item?.deathDate | date:'yyyy'}}
+              )</span>
+          </div>
+        </div>
+      </a>
+      <ng-container *ngTemplateOutlet="recursive; context: { $implicit: item.children }"></ng-container>
+
+    </li>
+  </ul> 
+</ng-template>
+
+<div class="container family-tree-main">
+  <div class="family-tree-row">
+    <div class="family-tree-logo-container">
+      <img class="family-tree-logo" src="assets/img/png/logo-white.png" alt="matarazzo">
+      <img class="family-tree-logo-print" src="assets/img/png/logo.png" alt="matarazzo">
+    </div>
+    <div class="family-tree-title-container">
+      <div class="family-tree-title">
+        <h1>Árvore Genealógica Família <strong>Bartolini</strong></h1>
+      </div>
+    </div>
+  </div>
+  <div class="family-tree-row center applicant">
+    <div class="body genealogy-body genealogy-scroll">
+      <div class="genealogy-tree">
+        <ul>
+          <li class="ancestor">
+            <a href="javascript:void(0);">
+              <div class="family-tree-container">
+                <div class="family-tree">
+                  <div class="family-tree-img">
+                    <img *ngIf="familyTree?.gender == 'F'" class="img" src="assets/img/svg/female_icon.svg" alt="matarazzo">
+                    <img *ngIf="familyTree?.gender == 'M'" class="img" src="assets/img/svg/male_icon.svg" alt="matarazzo">
+                  </div>
+                </div>
+                <div class="family-tree">
+                  <h2 class="family-tree-name">{{familyTree?.name}}</h2>
+                  <span class="family-tree-item">{{familyTree?.birthday | date:'yyyy'}}
+                  ( 
+                    {{familyTree?.deathDate | date:'yyyy'}} 
+                  )</span>
+                </div>
+              </div>
+            </a>
+            <ng-container *ngTemplateOutlet="recursive; context: { $implicit: familyTree?.children }"></ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+  
+
+
+  

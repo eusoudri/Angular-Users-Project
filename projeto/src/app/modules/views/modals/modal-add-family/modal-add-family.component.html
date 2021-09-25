@@ -1,0 +1,58 @@
+<div class="modal-content">
+  <app-modal-add-family></app-modal-add-family>
+  <div class="modal-header">
+    <h1 *ngIf="!edit" class="l-title-header container-default w-100">Família</h1>
+    <h1 *ngIf="edit" class="l-title-header container-default w-100">Família {{family.name}}</h1>
+    <p *ngIf="!edit" class="l-title container-default w-100">Adicione uma família</p>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <form autocomplete="off">
+          <div class="l-form-items">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="Nome Família">Nome Família*</label>
+                  <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="family.name"
+                    type="text"/>
+                    <div *ngIf="isInvalid" class="invalid-feedback">
+                      Preencha o nome da família
+                    </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="l-form-items">
+                  <div class="form-group select">
+                    <label for="Status">Status</label>
+                    <select class="form-control theme"
+                      [(ngModel)]="family.statusId"
+                      name="familiesStatus"
+                      id="input1">
+                      <option *ngFor="let item of familiesStatus" [ngValue]="item.id">{{item.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Cancelar</button>
+    <button *ngIf="isLoader" type="button" class="btn btn-primary">
+      <div  class="spinner-border text-light" role="status"></div>
+    </button>
+    <button *ngIf="!isLoader && !edit" (click)="submitForm()" type="button" class="btn btn-primary">
+      <span>Adicionar</span>
+    </button>
+    <button *ngIf="!isLoader && edit" (click)="editForm()" type="button" class="btn btn-primary">
+      <span>Atualizar</span>
+    </button>
+  </div>
+</div>

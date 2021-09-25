@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+@import './assets/styles/shared/colors.scss';
+@import './assets/styles/shared/layout.scss';
+@import './assets/styles/shared/theme.scss';
+@import './assets/styles/shared/family-tree.scss';

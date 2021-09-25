@@ -1,0 +1,63 @@
+<ng-template #recursive let-p>
+  <ul *ngIf="p && p.length">
+    <li *ngFor="let item of p">
+      <a href="javascript:void(0);">
+        <div class="family-tree-container">
+          <div class="family-tree">
+            <div class="family-tree-img">
+              <img class="img" src="assets/img/svg/male_icon.svg" alt="matarazzo">
+            </div>
+          </div>
+          <div class="family-tree">
+            <h2 class="family-tree-name">{{item.Name}}</h2>
+            <span class="family-tree-item">(1992)</span>
+          </div>
+        </div>
+      </a>
+      <ng-container *ngTemplateOutlet="recursive; context: { $implicit: item.children }"></ng-container>
+
+    </li>
+  </ul> 
+</ng-template>
+
+<div class="container family-tree-main">
+  <div class="family-tree-row">
+    <div class="family-tree-logo-container">
+      <img class="family-tree-logo" src="assets/img/png/logo.png" alt="matarazzo">
+    </div>
+    <div class="family-tree-title-container">
+      <div class="family-tree-title">
+        <h1>Árvore Genealógica Família <strong>Bartolini</strong></h1>
+      </div>
+    </div>
+  </div>
+  <div class="family-tree-row center applicant">
+    <div class="body genealogy-body genealogy-scroll">
+      <div class="genealogy-tree">
+        <ul>
+          <li>
+            <a href="javascript:void(0);">
+              <div class="family-tree-container">
+                <div class="family-tree">
+                  <div class="family-tree-img">
+                    <img class="img" src="assets/img/svg/female_icon.svg" alt="matarazzo">
+                  </div>
+                </div>
+                <div class="family-tree">
+                  <h2 class="family-tree-name">{{mock.Name}}</h2>
+                  <span class="family-tree-item">(1992) 
+                  ( 
+                    <svg-icon class="svg-small" src="assets/img/svg/cross.svg"></svg-icon>
+                    2060
+                  )</span>
+                </div>
+              </div>
+            </a>
+            <ng-container *ngTemplateOutlet="recursive; context: { $implicit: mock.children }"></ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  

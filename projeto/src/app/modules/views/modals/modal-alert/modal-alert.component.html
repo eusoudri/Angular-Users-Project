@@ -1,0 +1,22 @@
+<div class="modal-content text-center">
+  <div class="modal-header">
+    <svg-icon class="l-svg-large l-svg-color-cancel" src="assets/img/svg/cancel.svg"></svg-icon>
+  </div>
+  <h1 class="l-title-header container-default w-100">
+    Excluir
+  </h1>
+  <p class="l-title container-default w-100">
+    Você tem certeza que deseja deletar 
+    <span *ngIf="activatedRoute != 'Famílias'"><strong>{{member.firstName}}</strong>?</span>
+    <span *ngIf="activatedRoute == 'Famílias'">família<strong> {{member.name}}</strong>?</span>
+  </p>
+  <div class="modal-footer offset-lg-2 col-sm-8">
+    <button (click)="onClose()" type="button" class="btn btn-tertiary">Cancelar</button>
+    <button *ngIf="isLoader" type="button" class="btn btn-primary">
+      <div class="spinner-border text-light" role="status"></div>
+    </button>
+    <button *ngIf="!isLoader" (click)="deleteConfirm()" type="button" class="btn btn-primary">
+      <span>Confirmar</span>
+    </button>
+  </div>
+</div>

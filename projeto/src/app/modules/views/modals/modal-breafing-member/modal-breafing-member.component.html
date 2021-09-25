@@ -1,0 +1,45 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="l-title-header container-default w-100">Resumo Membro</h1>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <ckeditor [editor]="Editor" data="
+          <p>
+            Nome: {{member.firstName}} {{member.lastName}}<br/>
+            Sexo: {{member.gender}}<br/>
+            Local de Nascimento: {{member.birthPlace}}<br/>
+            Data de Nascimento: {{member.birthDate}}<br/>
+            Requerente: {{member.applicant}}<br/>
+            E-mail: {{member.email}}<br/>
+            CPF: {{member.document}}<br/>
+            Telefone: {{member.phone}}<br/>
+            Estado Civil: {{member.maritalStatusId}}<br/>
+            Profissão: {{member.profession}}<br/><br/>
+            <b>Endereço</b><br/><br/>
+            Cep: {{member.address.zipCode}}<br/>
+            Rua: {{member.address.street}} nº {{member.address.number}}<br/>
+            Complemento: {{member.address.complement}}<br/>
+            Bairro: {{member.address.neighbourhood}}<br/>
+            Cidade: {{member.address.city}}<br/>
+            Relacionamento<br/><br/>
+            Grau de Parentesco: {{kinshipRelationship.kin}}<br/>
+            Parente: {{kinshipRelationship.member}}<br/><br/>
+            <b>Extras</b><br/><br/>
+            Local de Casamento: {{member.marriagePlace}}<br/>
+            Data de Casamento: {{member.marriageDate}}<br/>
+            Nome do Cônjuge: {{member.spouseName}}<br/>
+            Nascionalidade Cônjuge: {{member.spouseBirthPlace}}<br/>
+            Local Óbito: {{member.deathPlace}}<br/>
+            Data Óbito: {{member.deathDate}}<br/>
+            Observações: {{member.note}}
+          </p>"
+        ></ckeditor>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Fechar</button>
+  </div>
+</div>

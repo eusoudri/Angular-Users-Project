@@ -1,0 +1,169 @@
+
+<div class="l-header title">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="l-title-header">Famílias</h1>
+    </div>
+  </div>
+</div>
+
+<div class="l-header info">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-10 offset-lg-1 col-lg-6 offset-xl-4 col-xl-5">
+      <div class="l-search">
+        <form class="form-inline" autocomplete="off">
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" 
+              [(ngModel)]="query"
+              id="search"
+              name="query" 
+              (keyup)="onSearch(query)"
+              placeholder="Buscar">
+          </div>
+          <a class="l-btn-search"><svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/search.svg"></svg-icon></a>
+        </form>
+      </div>
+    </div>
+    <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-3">
+      <div class="l-add">
+        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(modalFamily)">
+          <div class="l-btn-icon">
+            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
+          </div>
+          <div class="l-btn-text">
+            Adicionar Família
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalFamily>
+  <app-modal-add-family 
+    (alert)="updateAlert($event)" 
+    (families)="updateFamilies($event)" 
+    (close)="closeModal($event)"
+    [familiesStatus]=familiesStatus
+    [config]="{backdrop: 'static'}">
+  </app-modal-add-family>
+</ng-template>
+<div class="l-components">
+  <div *ngIf="isLoader" class="position-center">
+    <div  class="spinner-border large text-dark" role="status"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <p class="l-title">Lista de Famílias Cadastradas</p>
+    </div>
+    <div class="col-sm-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group select">
+            <select class="form-control filter"
+              [(ngModel)]="familiesStatus"
+              name="familiesStatus"
+              placeholder="Status"
+              id="input1">
+              <option [value]="familiesStatus">Status</option>
+              <option *ngFor="let item of familiesStatus" [ngValue]="item.id">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group select">
+            <select class="form-control filter"
+              name="status"
+              placeholder="Status"
+              id="input1">
+              <option>Usuário</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="families?.length == 0" class="alert alert-warning" role="alert">
+    Ainda não há famílias cadastradas
+  </div>
+  <ul class="list-group list-group-flush l-list-content">
+    <div *ngIf="!isLoader" class="list-group-item header">
+      <div class="row">
+        <div class="col-sm-4">
+          <h2 class="l-title-header-small">Nome</h2>
+        </div>
+        <div class="col-sm-2">
+          <h2 class="l-title-header-small text-center">Requerentes</h2>
+        </div>
+        <div class="col-sm-3">
+          <h2 class="l-title-header-small text-center">Status</h2>
+        </div>
+        <div class="col-sm-1">
+          <h2 class="l-title-header-small text-center">Resumo</h2>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+    <li *ngFor="let family of families" class="list-group-item">
+      <div class="l-list-content-click" [routerLink]="['/family-member-list', family.name, family.id]"></div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="cursor-pointer col-sm-4">
+            <h2 class="l-title-medium">{{ family.name }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-2 d-sm-none d-lg-block text-center">
+          <p class="l-title-small">03</p>
+        </div>
+        <div (click)="openModal(modalBreafing, family.id)" class="col-sm-3 text-center">
+          <p *ngIf="family.status">
+            {{ family.status.name }}
+          </p> 
+        </div>
+        <a (click)="openModal(modalBreafing, family.id)" class="col-sm-1 text-center">
+          <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/review.svg"></svg-icon>
+        </a>
+        <div class="col-sm-2">
+          <a (click)="deleteModal(modalDelete)" class="default-button-right">
+            <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
+          </a>
+          <a (click)="openModal(modalEdit, family.id)" class="default-button-right">
+            <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
+          </a>
+        </div>
+      </div>
+
+      <ng-template #modalBreafing>
+        <app-modal-breafing
+          [family]=family
+          (close)="closeModal($event)">
+        </app-modal-breafing>
+      </ng-template>
+
+      <ng-template #modalEdit>
+        <app-modal-add-family 
+          (alert)="updateAlert($event)" 
+          (families)="updateFamilies($event)" 
+          (close)="closeModal($event)" 
+          [family]=family
+          [familiesStatus]=familiesStatus
+          [edit]="true" 
+          [config]="{backdrop: 'static'}">
+        </app-modal-add-family>
+      </ng-template>
+
+      <ng-template #modalDelete>
+        <app-modal-alert 
+          (close)="closeModal($event)" 
+          (delete)="deleteFamily($event)" 
+          [member]=family 
+          [config]="{backdrop: 'static'}">
+        </app-modal-alert>
+      </ng-template>
+    </li>
+  </ul>
+</div>
+
+<!-- <pagination [totalItems]="30"></pagination> -->
+
+

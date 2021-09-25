@@ -1,0 +1,415 @@
+.matarazzo-theme{
+  textarea,
+  input,
+  select,
+  a,
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-info,
+  .btn-tertiary {
+    &:focus,
+    &:active{
+      box-shadow: 0 0 0 0;
+      outline: 0;
+    }
+  } 
+
+  &.theme-default{
+    .bs-datepicker-head{
+      background-color: $color-primary;
+    }
+  } 
+
+  .bs-datepicker{
+    &-container{
+      padding: 0;
+    }
+  }
+
+  .container{
+    padding: 20px 15px;
+    max-width: 1500px;
+    min-height: 800px;
+  }
+
+  .form{
+    &-control{
+      &.filter{
+        background: none;
+        border: 1px solid $color-gray-medium;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        margin-top: -10px;
+        padding: 8px 15px;
+        color: $color-black;
+      }
+      &.theme{
+        background: none;
+        border-bottom: 1px solid $color-gray;
+        border-radius: initial;
+        margin-bottom: 10px;
+
+        input, select{
+          padding: 10px;
+        }
+
+        &.is-invalid{
+          border-bottom: 1px solid $color-alert;
+
+          &:focus{
+            box-shadow: none;
+          }
+        }
+      }
+
+      &.phone{
+        padding: 11px 2px;
+        float: left;
+        width: 120px;
+
+        &.ddd{
+          width: 39px;
+          margin-right: 10px;
+
+        }
+        &.prefix{
+          width: 45px;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    &-check-input{
+      border: 1px solid $color-gray;
+
+      &:checked{
+        background-color: $color-gray-dark;
+      }
+    }
+
+    &-control{
+      border: none;
+      border-radius: 16px;
+      font-size: 12px;
+      color: $color-gray;
+      padding: 0 12px 5px 12px;
+
+      &.text-area{
+        border: 1px solid $color-gray;
+        min-height: 95px;
+      }
+    }
+  }
+
+  .show>{
+    .btn-info.dropdown-toggle{
+      background-color: $color-gray-light;
+      border: 1px solid $color-gray-medium;
+
+      &:focus{
+        box-shadow: none;
+      }
+    }
+  }
+
+  .btn{
+    &-primary{
+      @extend .btn-default;
+      background-color: $color-primary;
+      font-size: 12px;
+
+      &:hover{
+        background-color: $color-primary-light;
+      }
+
+      &.btn-small{
+        padding: 4px 16px 6px;
+      }
+    }
+
+    &-secondary{
+      @extend .btn-default;
+      background: none;
+      color: $color-gray;
+      border: 1px solid $color-gray-medium;
+      font-size: 12px;
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
+    }
+
+    &-info{
+      font-size: 11px;
+      width: max-content;
+      background-color: $color-gray-light;
+      border: 1px solid $color-gray-medium;
+      color: $color-gray-dark;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
+
+      &.file{
+        min-width: 100px
+      }
+    }
+
+    &-tertiary{
+      @extend .btn-default;
+      background-color: $color-gray-light;
+      border: 1px solid $color-gray-medium;
+      font-size: 12px;
+
+      &.right{
+        position: absolute;
+        left: 32px;
+      }
+
+      &.btn-small{
+        padding: 5px 15px 8px;
+      }
+
+      &:hover{
+        background-color: $color-gray-medium;
+      }
+    }
+  }
+
+  .list-group-flush{
+    &.kinship{
+      .list-group-item{
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: capitalize;
+        background: none;
+        padding: 10px;
+    
+        p, h2{
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  .list-group-item{
+    background: none;
+    padding: 26px 20px 20px 20px;
+    transition: 0.3s;
+
+    &.header{
+      margin-top: 30px;
+      padding: 17px 20px;
+      background-color: $color-gray-light;
+    }
+
+    &:hover{
+      background-color: $color-gray-light;
+    }
+
+    p, h2{
+      margin: 0;
+    }
+  }
+
+  .modal{
+    &-footer{
+      .btn-primary{
+        min-width: 150px;
+      }
+    }
+
+    &-content{
+      padding: 10px;
+      border-radius: 15px;
+      border: none;
+
+      &.large-height{
+        min-height: 600px;
+
+        .modal-body{
+          height: 460px;
+          overflow: auto;
+          overflow-x: hidden;
+        }
+      }
+    }
+
+    &-header{
+      display: block;
+    }
+
+    &-dialog{
+      .list-group{
+        .list-group-item{
+          padding: 10px 20px;
+          color: $color-gray;
+        }
+      }
+    }
+  }
+
+  .modal-footer,
+  .modal-header{
+    border: none;
+  }
+
+  .form-group{
+    &.select{
+      position: relative;
+      &::before{
+        content: '';
+        border: solid $color-gray-dark;;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 2px;
+        position: absolute;
+        right: 18px;
+        bottom: 17px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    }
+
+    &.phone{
+      float: left
+    }
+  }
+  
+  .breadcrumb{
+    @extend .container-default;
+    width: 100%;
+    height: 20px;
+
+    &-item{
+      a{
+        color: $color-gray;
+      }
+
+      &.active{
+        font-weight: 700;
+      }
+    } 
+  }
+  .page-link{
+    color: $color-black
+  }
+  .page-item{
+    &.active{
+      .page-link{
+        background-color: $color-primary;
+        border-color: $color-primary;
+
+        &:hover{
+          background-color: $color-gray;
+          border-color: $color-gray;
+        }
+      }
+    }
+  }
+
+  .pagination{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .nav{
+    &-pills{
+      .nav-link{
+        padding: 15px 15px 15px 40px;
+        
+        &.active{
+          background-color: $color-gray-lightness;
+          border-radius: 18px 0 0 18px;
+          padding: 15px 15px 15px 40px;
+          color: $color-gray;
+        }
+      }
+    }
+
+    &-tabs{
+      margin-bottom: 30px;
+
+      .nav-link{
+        color: $color-gray-dark;
+
+        &.active{
+          font-weight: 600;
+          background-color: $color-gray-light;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .dropdown{
+    &-toggle{
+      &:after{
+        display: none;
+      }
+    }
+    &-menu{
+      padding: 10px 15px;
+      font-size: 12px;
+
+      p{
+        margin: 5px 0;
+      }
+    }
+  }
+
+  .spinner-border{
+    width: 17px;
+    height: 17px;
+
+    &.large{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .float-right{
+    float: right;
+  }
+
+  .text-right{
+    text-align: right;
+  }
+
+  .ck-editor__editable_inline {
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  @media only screen and (max-width: 960px) {
+    .nav{
+      &-pills{
+        .nav-link{
+          padding: 15px 15px 15px 20px;
+          
+          &.active{
+            padding: 15px 15px 15px 20px;
+          }
+        }
+      }
+    }
+
+    .modal-dialog{
+      max-width: 700px;
+    }
+
+    .container{
+      max-width: 900px;
+    }
+  }
+}
+
+

@@ -1,0 +1,196 @@
+<div class="l-header title">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="l-title-header">Família {{family?.name}}</h1>
+    </div>
+    <div class="col-sm-12">
+      <p *ngIf="family?.status" class="l-title">
+        <strong>{{family.status.name}}</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="l-header info">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-10 offset-lg-1 col-lg-6 offset-xl-2 col-xl-6">
+      <div class="l-search">
+        <form class="form-inline" autocomplete="off">
+          <div class="form-group mb-2">
+            <input type="text" class="form-control" 
+              [(ngModel)]="query"
+              id="search"
+              name="query" 
+              (keyup)="onSearch(query)"
+              placeholder="Buscar">
+          </div>
+          <a class="l-btn-search"><svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/search.svg"></svg-icon></a>
+        </form>
+      </div>
+    </div>
+    <div class="offset-sm-5 col-sm-7 offset-lg-0 col-lg-5 col-xl-4">
+      <div class="l-add">
+        <a class="btn btn-primary" data-toggle="modal" (click)="openModal(modalMember)">
+          <div class="l-btn-icon">
+            <svg-icon class="l-svg-small l-svg-color-white" src="assets/img/svg/plus.svg"></svg-icon>
+          </div>
+          <div class="l-btn-text">
+            Adicionar Membro
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalMember>
+  <app-modal-add-family-member 
+    (updateMembers)="updateMembers($event)"
+    (close)="closeModal($event)" 
+    [edit]="false"  
+    [familyId]="id" 
+    [members]="members" 
+    [config]="{backdrop: 'static'}">
+  </app-modal-add-family-member>
+</ng-template>
+
+<div class="l-components">
+  <div *ngIf="isLoader" class="position-center">
+    <div  class="spinner-border large text-dark" role="status"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <p class="l-title">Lista de Membros Cadastradas</p>
+    </div>
+    <div class="col-sm-12">
+      <h2 class="l-title-medium" *ngIf="ancestor">
+        <strong>Antepassado:</strong>
+        {{ancestor.firstName}}
+      </h2>
+    </div>
+  </div>
+  <div *ngIf="members?.length == 0" class="alert alert-warning" role="alert">
+    Ainda não há membros cadastrados nesta família
+  </div>
+  <ul class="list-group list-group-flush l-list-content">
+    <div *ngIf="!isLoader" class="list-group-item header">
+      <div class="row">
+        <div class="col-lg-3 col-xl-4">
+          <h2 class="l-title-header-small">Nome</h2>
+        </div>
+        <div class="col-sm-2 text-center">
+          <h2 class="l-title-header-small">Grau Parentesco</h2>
+        </div>
+        <div class="col-sm-1">
+          <h2 class="l-title-header-small text-center">Sexo</h2>
+        </div>
+        <div class="col-sm-2">
+          <h2 class="l-title-header-small text-center">Requerente</h2>
+        </div>
+        <div class="col-sm-1">
+          <h2 class="l-title-header-small text-center">Resumo</h2>
+        </div>
+        <div class="col-sm-1">
+          <h2 class="l-title-header-small text-center">Docs</h2>
+        </div>
+        <div class="col-lg-2 col-xl-1"></div>
+      </div>
+    </div>
+    <li *ngFor="let member of members" class="list-group-item">
+      <div class="row">
+        <div class="col-lg-3 col-xl-4">
+          <h2 class="l-title-medium">{{ member.firstName }} {{ member.lastName }}</h2>
+        </div>
+        <div class="col-sm-2 text-center">
+          <p class="l-title-medium">Filho</p>
+        </div>
+        <div class="col-sm-1 text-center">
+          <div class="l-title-small">
+            <p *ngIf="member.gender.toUpperCase() === 'M'">Masculino</p>
+            <p *ngIf="member.gender.toUpperCase() === 'F'">Feminino</p>
+          </div>
+        </div>
+        <div class="col-sm-2 text-center">
+          <div class="l-title-small">
+            <p *ngIf="!member.applicant">Não</p>
+            <p *ngIf="member.applicant">Sim</p>
+          </div>
+        </div>
+        <div class="col-sm-1 text-center">
+          <a (click)="openModal(modalBreafingMember, member.id)" class="col-sm-1 text-center">
+            <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/review.svg"></svg-icon>
+          </a>
+        </div>
+        <div class="col-sm-1 text-center">
+          <div class="dropdown show">
+            <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <svg-icon class="l-svg-default doc l-svg-color-default" src="assets/img/svg/doc.svg"></svg-icon>
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <div *ngFor="let item of filesStatus" class="row">
+                <p class="l-title-small col-sm-8">
+                  {{item.name}}
+                </p>
+                <svg-icon *ngIf="checkListDocs(member, item)" class="l-svg-small l-svg-color-success col-sm-4" src="assets/img/svg/ok.svg"></svg-icon>
+                <svg-icon *ngIf="!checkListDocs(member, item)" class="l-svg-small l-svg-color-cancel col-sm-4" src="assets/img/svg/cancel.svg"></svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-xl-1">
+          <a (click)="deleteModal(modalDelete)" class="default-button-right">
+            <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
+          </a>
+          <a (click)="openModal(modalEdit, member.id)" class="default-button-right">
+            <svg-icon class="l-svg-default l-svg-color-default" src="assets/img/svg/pencil.svg"></svg-icon>
+          </a>
+        </div>
+      </div>
+
+      <ng-template #modalBreafingMember>
+        <app-modal-breafing-member
+          [member]="member" 
+          [family]="family" 
+          (close)="closeModal($event)">
+        </app-modal-breafing-member>
+      </ng-template>
+
+      <ng-template #modalEdit>
+        <app-modal-add-family-member 
+          (updateMembers)="updateMembers($event)" 
+          (close)="closeModal($event)" 
+          [familyId]="id" 
+          [members]="members" 
+          [edit]="true" 
+          [memberId]=member.id
+          [config]="{backdrop: 'static'}">
+        </app-modal-add-family-member>
+      </ng-template>
+
+      <ng-template #modalDelete>
+        <app-modal-alert 
+          (close)="closeModal($event)" 
+          (delete)="deleteMember($event)" 
+          [member]="member"
+          [config]="{backdrop: 'static'}">
+        </app-modal-alert>
+      </ng-template>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-sm-7">
+    <a 
+      [routerLink]="['/family-tree', id]"
+      type="submit" 
+      class="btn btn-primary l-family-tree">
+      Gerar Árvore Genealógica 
+    </a>
+    
+  </div>
+</div>
+
+<!-- <pagination [totalItems]="30"></pagination> -->

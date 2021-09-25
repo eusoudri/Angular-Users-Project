@@ -1,0 +1,577 @@
+
+  <div class="modal-content large-height ">
+    <div *ngIf="isLoaderBackground && edit" class="spinner-border large text-dark position-center-loader" role="status"></div>
+    <div *ngIf="isLoaderBackground && edit" class="l-loader-background"></div>
+    
+    <div class="modal-header">
+      <h1 *ngIf="!edit" class="l-title-header container-default w-100">Novo Membro</h1>
+      <h1 *ngIf="edit" class="l-title-header container-default w-100">{{member.firstName}}</h1>
+      <p *ngIf="!edit" class="l-title container-default w-100">Adicione um novo membro da família</p>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="true">Dados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false">Endereço</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="kin-tab" data-toggle="tab" href="#kin" role="tab" aria-controls="kin" aria-selected="false">Relacionamento</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="extra-tab" data-toggle="tab" href="#extra" role="tab" aria-controls="extra" aria-selected="false">Extras</a>
+            </li>
+          </ul>
+          <form class="tab-content" id="myTabContent" autocomplete="off">
+            <div class="tab-pane fade show active" id="data" role="tabpanel" aria-labelledby="data-tab">
+              <!-- Member Required -->
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Nome">Nome*</label>
+                      <input class="form-control theme" [ngClass]="{'is-invalid': isInvalid === true}"
+                        id="firstName"
+                        name="firstName"
+                        [(ngModel)]="member.firstName"
+                        type="text">
+                        <div *ngIf="isInvalid" class="invalid-feedback">
+                          Preencha o nome
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Sobrenome">Sobrenome</label>
+                      <input class="form-control theme" 
+                        id="lastName" 
+                        name="lastName"
+                        [(ngModel)]="member.lastName"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="col-form-label col-sm-12 pt-0">Sexo</label>
+                    <div class="form-check form-check-inline" *ngFor="let item of genderOp">
+                      <input class="form-check-input" 
+                        type="radio" 
+                        name="gender"
+                        [(ngModel)]="member.gender"
+                        id="{{item.value}}" 
+                        [value]="item.value">
+                      <label class="form-check-label" for="{{item.value}}">{{item.desc}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Local Nascimento">Local Nascimento</label>
+                      <input class="form-control theme" 
+                        id="birthPlace" 
+                        name="birthPlace"
+                        [(ngModel)]="member.birthPlace"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Data Nascimento">Data Nascimento</label>
+                      <input class="form-control theme" 
+                        id="birthDate" 
+                        name="birthDate" 
+                        type="text"
+                        (keyup)="dateMask($event)"
+                        [(bsValue)]="member.birthDate" 
+                        value="{{ member.birthDate | date:'dd/MM/yyyy' }}"
+                        [bsConfig]="{ containerClass: 'theme-default matarazzo-theme' }"
+                        bsDatepicker>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-check mt-3 mr-sm-2">
+                      <input class="form-check-input" 
+                        id="ancestor"
+                        type="checkbox" 
+                        name="ancestor"
+                        [(ngModel)]="member.ancestor">
+                      <label class="form-check-label" for="ancestor">
+                        Antepassado
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-check mt-3 mr-sm-2">
+                      <input class="form-check-input" 
+                        id="applicant"
+                        type="checkbox" 
+                        name="applicant"
+                        [(ngModel)]="member.applicant">
+                      <label class="form-check-label" for="applicant">
+                        Requerente
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="E-mail">E-mail</label>
+                      <input class="form-control theme"
+                        id="email"
+                        name="email"
+                        [(ngModel)]="member.email"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Cpf">Cpf</label>
+                      <input class="form-control theme" 
+                        mask="000.000.000-00"
+                        id="document" 
+                        name="document"
+                        [(ngModel)]="member.document"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="form-group">
+                      <label for="Prefixo">Prefixo</label>
+                      <input class="form-control theme" 
+                        id="phonePrefix" 
+                        name="phonePrefix"
+                        [(ngModel)]="member.phonePrefix"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="form-group">
+                      <label for="Prefixo">DDD</label>
+                      <input class="form-control theme" 
+                        id="phoneDDD" 
+                        name="phoneDDD"
+                        [(ngModel)]="member.phoneDDD"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="Prefixo">Telefone</label>
+                      <input class="form-control theme" 
+                        id="phone" 
+                        name="phone"
+                        [(ngModel)]="member.phone"
+                        type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group select">
+                      <label for="Estado Civil">Estado Civil</label>
+                      <select class="form-control theme"
+                        [(ngModel)]="member.maritalStatusId"
+                        name="maritalStatus"
+                        placeholder="Qualificação Civil"
+                        id="input1">
+                        <option *ngFor="let item of maritalStatus" [ngValue]="item.id">{{item.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Profissão">Profissão</label>
+                      <input class="form-control theme" 
+                        id="profession" 
+                        name="profession"
+                        [(ngModel)]="member.profession"
+                        type="text" >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Data Óbito">Data Óbito</label>
+                      <input class="form-control theme" 
+                      id="deathDate" 
+                      name="deathDate" 
+                      [(ngModel)]="member.deathDate"
+                      type="text"
+                      placeholder="Data Óbito"
+                      bsDatepicker
+                      [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default matarazzo-theme' }">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Local Óbito">Local Óbito</label>
+                      <input class="form-control theme"
+                        id="deathPlace" 
+                        name="deathPlace"
+                        [(ngModel)]="member.deathPlace"
+                        type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Member Required -->
+
+            <!-- Address -->
+            <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Cep">Cep</label>
+                      <input class="form-control theme"
+                        id="zipCode" 
+                        name="zipCode"
+                        [(ngModel)]="member.address.zipCode"
+                        type="text" 
+                        mask="00000-000">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <div class="form-group">
+                      <label for="Endereço">Endereço</label>
+                      <input class="form-control theme"
+                        id="street" 
+                        name="street"
+                        [(ngModel)]="member.address.street"
+                        type="text" >
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="nº">nº</label>
+                      <input class="form-control theme"
+                        id="number" 
+                        name="number"
+                        [(ngModel)]="member.address.number"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Complemento">Complemento</label>
+                      <input class="form-control theme"
+                        id="complement" 
+                        name="complement"
+                        [(ngModel)]="member.address.complement"
+                        type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Bairro">Bairro</label>
+                      <input class="form-control theme"
+                        id="neighbourhood" 
+                        name="neighbourhood"
+                        [(ngModel)]="member.address.neighbourhood"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Cidade">Cidade</label>
+                      <input class="form-control theme"
+                        id="city" 
+                        name="city"
+                        [(ngModel)]="member.address.city"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="UF">UF</label>
+                      <input class="form-control theme"
+                        id="state" 
+                        name="state"
+                        [(ngModel)]="member.address.state"
+                        type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kinship -->
+            <div class="tab-pane fade" id="kin" role="tabpanel" aria-labelledby="kin-tab">
+              <div class="alert alert-secondary" role="alert">
+                Relacione o membro com seus parentes
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group select">
+                      <label for="Grau de Parentesco">Grau de Parentesco</label>
+                      <select class="form-control theme"
+                        name="kin"
+                        [(ngModel)]="kinshipRelationship.kin"
+                        id="input2">
+                        <option *ngFor="let item of kins" [ngValue]="item">{{item.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-1 position-relative">
+                    <p class="position-center bottom-0">de</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group select">
+                      <label for="Parente">Parente</label>
+                      <select class="form-control theme"
+                        [(ngModel)]="kinshipRelationship.member"
+                        name="kinship"
+                        placeholder="Parente"
+                        id="input3">
+                        <option *ngFor="let item of members" [ngValue]="item">{{item?.firstName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <button (click)="addKinship()" type="button" class="btn btn-tertiary btn-small mt-2">
+                      <svg-icon class="l-svg-small l-svg-color-default" src="assets/img/svg/plus.svg"></svg-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="l-modal-item" *ngFor="let item of kinshipRelationshipList">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div>{{item.kin.name}} de {{item.member.firstName}}</div>
+                    </div>
+                    <div class="col-sm-1">
+                      <a (click)="removeKinship(item)">
+                        <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
+              <div *ngIf="!edit">
+                <div class="alert alert-warning" role="alert">
+                  O anexo de arquivos só estará disponível após a criação do membro.
+                </div>
+                <div class="l-background-block"></div>
+              </div>
+              <!-- Member Attachment -->
+              <div class="l-form-items">
+                <div *ngIf="member.files.length == 0" class="alert alert-secondary" role="alert">
+                  Ainda não há anexos vinculados a esse membro
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label for="Descrição do anexo">Descrição do anexo</label>
+                    <input class="form-control theme"
+                    id="fileDescription" 
+                    [(ngModel)]="fileDescription"
+                    name="fileDescription"
+                    type="text">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="Observação">Observação</label>
+                    <input class="form-control theme"
+                    id="fileNote" 
+                    [(ngModel)]="fileNote"
+                    name="fileNote"
+                    type="text">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Tipo Anexo">Tipo Anexo*</label>
+                      <select class="form-control theme" ng-required="true" [ngClass]="{'is-invalid': isInvalid === true}"
+                        id="fileType" 
+                        [(ngModel)]="fileType"
+                        name="fileType">
+                        <option [ngValue]="1">Nascimento</option>
+                        <option [ngValue]="2">Casamento</option>
+                        <option [ngValue]="3">Óbito</option>
+                        <option [ngValue]="99">Outros</option>
+                      </select>
+                      <div *ngIf="isInvalid" class="invalid-feedback">
+                        Escolha o tipo de anexo
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="file" style="display: none; justify-content: center;" (change)="uploadFile($event)" #attachButton>
+                    <button *ngIf="!isLoaderFile" (click)="attachButton.click()" type="file" class="btn btn-info file mt-2">
+                      <svg-icon class="l-svg-small l-btn-icon l-svg-color-default" src="assets/img/svg/paperclip.svg"></svg-icon>
+                      Anexar
+                    </button>
+                    <button *ngIf="isLoaderFile" type="button" class="btn btn-info file mt-2">
+                      <div class="spinner-border text-dark" role="status"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div *ngIf="member.files.length > 0" class="row l-title-modal text-center">
+                  <div class="col-sm-2">
+                    Descrição
+                  </div>
+                  <div class="col-sm-1">
+                    Data
+                  </div>
+                  <div class="col-sm-3">
+                    Observação
+                  </div>
+                  <div class="col-sm-2">
+                    Nome
+                  </div>
+                  <div class="col-sm-2">
+                    Tipo
+                  </div>
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-1"></div>
+                </div>
+                <div class="l-modal-item" *ngFor="let item of member.files">
+                  <div class="row text-center">
+                    <div class="col-sm-2">
+                      <div>{{item.description ? item.description: "-"}}</div>
+                    </div>
+                    <div class="col-sm-1">
+                      <div>{{item.createdDate | date:"dd/MM/yy"}}</div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div>{{item.note}}</div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div>{{item.fileName}}</div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div>{{getFileType(item.type)}}</div>
+                    </div>
+                    <div class="col-sm-1">
+                      <button (click)="downloadFile(item)" type="file" class="btn btn-info btn-default">
+                        <svg-icon class="l-svg-small l-svg-color-gray" src="assets/img/svg/download-button.svg"></svg-icon>
+                      </button>
+                    </div>
+                    <div *ngIf="!isLoaderDelete" class="col-sm-1">
+                      <a (click)="deleteFiles(item.id)">
+                        <svg-icon class="l-svg-medium l-svg-color-cancel" src="assets/img/svg/close.svg"></svg-icon>
+                      </a>
+                    </div>
+                    <div *ngIf="isLoaderDelete" class="col-sm-1">
+                      <div class="spinner-border text-dark" role="status"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Member Attachment -->
+
+            <!-- Member Extra -->
+            <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Local Casamento">Local Casamento</label>
+                      <input class="form-control theme" 
+                        id="marriagePlace" 
+                        name="marriagePlace" 
+                        [(ngModel)]="member.marriagePlace"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Data Casamento">Data Casamento</label>
+                      <input class="form-control theme" 
+                        id="marriageDate" 
+                        name="marriageDate" 
+                        [(ngModel)]="member.marriageDate"
+                        type="text"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default matarazzo-theme' }">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-form-items">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="Nome Cônjuge">Nome Cônjuge</label>
+                      <input class="form-control theme" 
+                        id="spouseName" 
+                        name="spouseName" 
+                        [(ngModel)]="member.spouseName"
+                        type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="Nascionalidade Cônjuge">Nascionalidade Cônjuge</label>
+                      <input class="form-control theme"
+                        id="spouseBirthPlace" 
+                        name="spouseBirthPlace" 
+                        [(ngModel)]="member.spouseBirthPlace"
+                        type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <label for="Observações">Observações</label>
+                      <textarea class="form-control text-area" 
+                        id="observation" 
+                        rows="3" 
+                        [(ngModel)]="member.note"
+                        name="note"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Member Extra -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer"> 
+      <button (click)="onClose()" type="button" class="btn btn-tertiary float-left">Cancelar</button>
+      <button *ngIf="isLoader" type="button" class="btn btn-primary">
+        <div  class="spinner-border text-light" role="status"></div>
+      </button>
+      <button *ngIf="!isLoader && !edit" (click)="submitForm()" type="button" class="btn btn-primary">
+        <span>Adicionar</span>
+      </button>
+      <button *ngIf="!isLoader && edit" (click)="editForm()" type="button" class="btn btn-primary">
+        <span>Atualizar</span>
+      </button>
+    </div>
+  </div>
